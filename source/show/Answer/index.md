@@ -1,0 +1,87 @@
+title: Answer
+date: 2015-11-25 16:02:26 
+---
+
+![](./1.PNG) ![](./2.PNG) ![](./3.PNG) ![](./4.PNG)
+
+### 关键技术 ###
+- HTML5
+- CSS3
+- APICloud
+- Restful API [查看数据库结构](./db.html)
+
+## 更新日志 ##
+
+### v0.0.1 ###
+
+测试版：
+
+![](data:image/png;base64,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)[Android](./v0.0.1 - Beta.apk)
+
+![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAJuklEQVR4Xu1d/b0sQxDtFwEiQASIAJEgAkSACBABIkEEiAARIAJ+9XbOONv31J6u3tm919X7z3t3p6c/Ttd3Vfe+aK393Y77vDBd/dBae3drg7bvtda+3777orX2+YU+uO37rbXoLz5uDdy2slrX73BfsdjDOmutLaAT6Bnov1prPw9v0b8N326tvdJR6auttbe2735vrf22/V9RdLz/FT0HdSsieLO19uHW9hOaL4iF1/BGa+31re2nrbWftv//KNbIbX9prf3ZccrV2PBiYgLBmtVPRRyotjxeiI3PLkwgmyOA5udZX4rruK0SSVdjs4A+7eqjAR2UzUqrl+MhDr69IA6CFcHiQcVQWvFdPMPi4t/4+4NO9GREHSII4/acgL8xV6bcGBdiBMqW1xDrBTdH/xB1ilO4L4zZEyzWu3NwRtEVFnbiwImiitUx2xfPEX2MiAMFtOqL58WW0wK6tfYsgA5L4ksSB8zO+H8onfgwRQc7/yreA8WERRDWRnzCUoFlg+csDoL9IQJiPmEJxQdWzbMAmsHL2F05LE40MDhHioNs3CcvOhbQp627q4zOTCdHvep5toEz3JEpMP7+yVM0T3YBvcUmMlsRdrCirHDVoZSUeccu+EdkJ7PXBTud+2d3nV17tHmHlCy7yvAm2UXnfrkv5YKH7azsc4VNKOHoL/twX1Z0VNjaueDcl4u4SRs0mUzFVZ619RXQU9jcwwVfQHeiIyJWiN7xBqgoGn8X7NxH71hpfUdsye5rUG982ObOKBo2N7d1FB1jwbWPOcCmhphhm5zbRqQPOHBUENE/RdEZXjs2t4pHZ261EzMZ0MqqcEBXAkWubUVcyLYL6BMsdwH66t0yHVQCVFlXTildG4++NQY29XTEBBbQmzJUcWenDDm1o+xdfp/taLZ9MS7HL1xKKd7/eNt9HgOKle37UHDKF4AyzNJevSUWw7FfoNaQ9bW3nZXRLriTccK1Cizr1yWF+b0ZMeOy71kKbV/vAvqhMuRNOczaYaA5lsuDKduXU0qcnlKJ1dhtpHaiX5VqUt9lbRVVq3h3Jv6Y+rNxMYZ6zqkupMUYD9ZJYb+/jK+PeIYV91XViFRsY9fWWSUjyltRaVa446wdNZ5U/gvoE1SPBjS7pOxiQwRkKaWKWw3KCo2OaBinn5iTMC4TBrvKqh6F16DkbjYup8jQLys7fo7QAPcflhMy/fv3t8qCV1zwjN1dttnV01UKaHgOLkVWEaUL6AvC/GZAY8wsTeQoR825UqtxBPVXbGM139kqVoWd7ItNnQV0TuaZwzIFNFd18pBctYnv2SVVLutIhShSSrwITgN9TXUbUEqZ619xwRWcIS5UFauaI+OB57xemRaruK48QZeN5rZOKY2UJqC/zPWfXQf6nZ3j8LjDDTsyWECfABnGjxtyVSe7zap6MrLNKk2kjkVwpWZP6fE3V56OeHbOhVfuOKeyMMZIFeuoi95Xpj6IiGbKcDYbPQLUNW1cFC3rW1lOI5aRc8GHrZ0F9GlrZl3wq4Hmqk6uxFQuJ4uW7DnEDLvNSstzxpypE22ZRVVUMaPoSAjgXIrqi11/54LzGA7ofb0jdjR3rIS/c0kric8KZblxM9CdOHCeYQXos8C/MrqzSS6gz5FxFF0C2qWfnHJzFJ0VhFco1i3YzbGi/BWHW8U6IjoW0Pk2DScRoiFsPq7EzA5DwtUN5fHNNr7KO7KrPEvRXLWpMtecfa+44KqKNZQw1sOuP1xsDjkois5CDjILXjkM6dxmmxWm3OERZ0mGPbTikWxFsc44kIRVDfy7gVVMYpainXavyHDVl5Pb7GLPhhzOlCEiY1xNmgVZkFJ6jSJryjYO0YHqS07tBCv9sa0Q7N67wlBsKlXFbVWF6KXMN/pV6bYMdKw3qxBQlamM3b7ejOVcGRdPzBWXO1OxEgefdcGdpeCo++oz6AtoB/Hp+SFAu1oMNRWnDPmdSq3GLCc5uCrenqvhduauVYYZOAvo89O900BzuRZAzU4pKZt7hJoQyGHbmOs6cNTYVZ6yfc4pJcwru8CEqRS2MVee8hpmKJqrXGMjYGDsc6zYnzEZF5BRoM+miRzlOPPPgXfJ0rh075NT/jYL7ihzAX1CaBpo2IK986JEiqqedBeFxMRAIWz7oi9WrNXKU3AYX3aiQgPMua7yNMQXLlHBe326TY3LB0LxfF+vilPErrmCkowtHVdUUkpOVrqxjrT13XptyGEBfXm7XPwdb98FaE51qWlzVaei6Kyqk/uFGOO2aiw+8Fk5SJql0JSLrS5Z4ZBDREEhes5c8BmHpcK2R95u4Mat1PHZYP2AlaWwk3M8QnS4xS+gB49WKHvVgZt5ma7m+cjk7OwGV8KvLoUmT2VVAvAL6BMCVwPNqayeOuPv7IAj2vJzl/hkt5ldf5Wq4hRa2Ls4wqB8AXaFo1/cPoY5stjkC1k4TABXOlsvgB5ywd2uMNAqwzJrGyvTKLNX3bhOoc+KLMynEgdPXfAFtHfQ7g40XN3ekO/TRJnLyu+B3TPdwAdF0X9fxcqXEfZ6I6gY9jf3hXZ99ay7TpmrZzEuu/58VyuP+9KmriZnFbs7LX1kcjZTwtUoZPRTSV445W+LgBbQDsKx50NAqyy4PJRIY3LGXLnK7ApnRe0uC85EgLbZspXVkWXE0UdfmaoqXtV46k5UdsHZnd+5fYblRvZ41hWeFQ3DrjANYANByWQqFswCustsV7zIaaBnqMFRXqVWg/uqZMHVHKyspAM+I3NUpq/LqJey4CPiQbVxJWPuFO7/AuirfwKDqIWrK93PdLB7y/cgubuLeKORKsvuXFKHQ/meU+6LiQH2cHYXK97jcTmTv/8sSWbeVSi6Ykc7dz5bsMu+Hyn+HNc5GS2xW0A/hOWuQGeXijCrXLrWmO1oTu1whSjYkpVSln6CrZ9dUILnfGFLhSt5vVzxij6YIPmiGIWHxO5WnuGIRsckR2xu5/qr5xWgj1TCpTuV3MDu8PsCutvmp0DRFcrLwpWKOyr9ujqWqwNQC+jTdjxroNWdqJxSUnZy9jN77mQZ2+SK0vliFGW/Z78d4KpY97Eek6Jd+okBGbWjZwNFszFzN68FdEfWjwZ0dpkJ5sd3cVaKEVXJa/+TfQ/SQN1NLw8qNQfS/vsdoQRw9jN70eSaKtW+IvblkLfyDEfMO8d2bgNdoXrFRGUCr7jYKohWyoJXTCMHyGz8wvX7nwWa0zEuDZS5pJUwqaNoTpEhVeUuRuEUW5aOQ7Y7Wy8Xy6Ntdhcr1stVrsHNsEbOLkY5MvJ1JNDO6nBRw4wr3Xodp7hxn1zg31H0swL6H/+28vmG4jczAAAAAElFTkSuQmCC)[iOS](./v0.0.1 - Beta.ipa)
+
+#### 实现功能 ####
+- 首页/侧边页
+	- 滚动banner
+	- 首页
+	- 答题
+	- 资料
+	- 个人
+	- 排名
+	- 娱乐
+	- 留言
+	- 更多
+	- 设置
+- 用户管理
+	- 登陆
+	- 注册
+	- 用户昵称
+	- 头像修改
+	- 用户二维码
+- 积分管理
+	- 答题加分(每道题只加一次)
+- 答题
+	- 按学科
+		- 参考资料
+		- 章节练习
+			- 按章节
+		- 模拟练习
+			- 按试卷
+		- 真题检测
+			- 按年份
+				- 按试卷
+- 资料
+	- 找资料
+		- 关键字查询
+	- 资料库
+		- 按学科
+			- 预览
+			- 下载(停止)
+			- 收藏
+	- 最新上传
+		- 按时间取最新三个
+	- 我的资料(收藏)
+- 用户设置
+	- 获取缓存
+	- 清空缓存
+	- 推荐给好友
+		- 通讯录发送短信推荐
+	- 是否允许3G下载
+	- 意见反馈
+		- 添加留言
+	- 关于作品
+- 用户收藏
+	- 文档收藏与取消收藏
+	- 题目收藏与取消收藏
+- 用户错题本
+	- 错题统计
+	- 错题查看
+	- 错题详解
+- 排行榜
+	- 用户个人积分
+	- 用户个人排名
+	- 总用户前20名
+- 扫码
+	- 打开网页二维码
+- 更多
+	- FAQ
