@@ -10,7 +10,9 @@ date: 2016-10-2 17:14:23
 重装了一下Unreal。发现不知道为什么.uproject文件没有被自动关联。谷歌了一下找到了修复的解决方案。  
 原文：[http://www.davidmoore.info/blog/2014/09/05/fix-the-missing-right-click-menu-for-unreal-engine-projects-uproject/](http://www.davidmoore.info/blog/2014/09/05/fix-the-missing-right-click-menu-for-unreal-engine-projects-uproject/)
 
-不过可能是因为适用于老版本的Unreal。新版本的Unreal的文件结构发生了变化。包括很多谷歌上的描述也是使用的原文的结构。而我用的Unreal 4.13.1版本并不适用。因此进行了一些修改。贴出解决方案cmd命令行文件。
+~~不过可能是因为适用于老版本的Unreal。新版本的Unreal的文件结构发生了变化。包括很多谷歌上的描述也是使用的原文的结构。而我用的Unreal 4.13.1版本并不适用。因此进行了一些修改。贴出解决方案cmd命令行文件。~~  
+不过该版本适用于自编译的Unreal引擎。对于使用Launcher安装的版本来说并不适用因此在原来的基础上进行了一些修改具体代码如下：
+
 ```bash
 :: UnrealProjectMenuRegistration.cmd
 ::
