@@ -33,13 +33,17 @@ date: 2016-10-13 10:27:36
 - `H` 隐藏
 - `Alt+H` 显示隐藏项
 - `Alt+S` 法向缩放
+- `Shift+S` 吸附
 - `Ctrl+A` 添加
 - `Ctrl+R` 环切
 - `Ctrl+L` 选中相连项
 - `Ctrl+D` 复制
 - `Ctrl+P` 设定父级
-- `Ctrl+S` 吸附
+- `Ctrl+J` 合并
+- `Ctrl+B` 边倒角
+- `Ctrl+Shift+B` 点倒角
 - `Ctrl+Alt+Q` 切换四格视图
+
 
 ## 其他 ##
 - `1` 前视图
