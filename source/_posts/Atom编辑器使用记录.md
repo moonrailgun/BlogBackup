@@ -1,6 +1,6 @@
-title: Atom编辑器使用记录
+title: Atom编辑器使用记录  
 tags:
-  - atom
+  - atom  
 date: 2016-11-18 19:24:08
 ---
 
@@ -47,3 +47,11 @@ PS：我感觉我的 _markdown pad2_ 和 _sublime_ 这两款软件可以删了
 支持多种代码的美化操作。其名为`atom-beautify`。可以再设置面板中对每个代码进行设置。
 
 > Beautify HTML, CSS, JavaScript, PHP, Python, Ruby, Java, C, C++, C#, Objective-C, CoffeeScript, TypeScript, Coldfusion, SQL, and more in Atom
+
+## 选中高亮插件
+
+用过sublime的用户一定会知道。sublime有个特性非常好用那就是可以高亮该文档中所有被选中的文字。对于快速查找该变量的使用非常方便。而atom原生并不自带这个功能。因此有个插件能够帮助用户实现这个功能。那就是`highlight-selected`。简单安装后即可使用
+
+## 浏览器插件
+做html技术的可能会需要。因为很多时候我们并不想开个多余的浏览器(或者浏览器的标签页)。那么在编辑器中打开一个浏览器的标签页也许是个不错的选择。我喜欢atom给我拖曳的方式让我自由的修改我的工作空间。那么多多使用多个子面板。其中一个用于显示输出的结果。也许是小窗口的用户一个不错的选择  
+这个插件的名字叫`browser-plus`
