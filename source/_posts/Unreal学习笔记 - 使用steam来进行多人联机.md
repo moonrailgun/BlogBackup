@@ -2,7 +2,7 @@ title: Unreal学习笔记 - 使用steam来进行多人联机
 tags:
   - Unreal  
   - Steam
-date: 2016-10-05 17:23:16 
+date: 2016-10-05 17:23:16
 
 ---
 
@@ -45,3 +45,6 @@ DefaultPlatformService=Steam
 ![](/images/unreal/FindSessions.jpg)
 ### 销毁会话 ###
 ![](/images/unreal/DestroySession.jpg)
+
+## 进阶 ##
+不满足于默认的功能？想要诸如好友、成就、语音...这些steam的拓展功能？在UnrealForum有一款插件正是满足了这些需求[Advanced Sessions Plugin](https://forums.unrealengine.com/showthread.php?69901-Advanced-Sessions-Plugin)而且这款插件是完全免费的
