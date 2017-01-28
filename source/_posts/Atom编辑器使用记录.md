@@ -44,7 +44,7 @@ PS：我感觉我的 _markdown pad2_ 和 _sublime_ 这两款软件可以删了
 
 ## 代码美化插件
 
-支持多种代码的美化操作。其名为`atom-beautify`。可以再设置面板中对每个代码进行设置。
+支持多种代码的美化操作。其名为`atom-beautify`。可以再设置面板中对每个语言代码进行设置。
 
 > Beautify HTML, CSS, JavaScript, PHP, Python, Ruby, Java, C, C++, C#, Objective-C, CoffeeScript, TypeScript, Coldfusion, SQL, and more in Atom
 
@@ -65,3 +65,9 @@ PS：我感觉我的 _markdown pad2_ 和 _sublime_ 这两款软件可以删了
 
 ## 网页服务器插件
 `atom-live-server`插件可以在本地快速开启一个网页服务器，并且还自带ws服务可以提供热更新（即文件保存自动刷新）。可以说是网页、网站前端开发者必备的插件。轻量级、快速。
+
+## 代码地图
+小地图`minimap`。不多说你懂的，要是不懂我也没办法。Atom上minimap还附带一堆实用相关插件可以根据需求自行安装
+
+## 颜色代码显示
+`pigments` 一款可以让颜色代码背景色变为该种颜色背景的插件。很实用且直观
