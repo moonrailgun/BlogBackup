@@ -7,5 +7,5 @@ title: 关于我
 业余创作者。
 专业宅。
 正在自学Unreal 4引擎
-正在寻找工作
-Is looking for work
+正在寻找工作ing...
+Is looking for work...
