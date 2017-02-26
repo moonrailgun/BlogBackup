@@ -26,6 +26,11 @@ date: 2016-09-29 19:04:54
 
 在[mixamo](https://www.mixamo.com/)上可以下载到很多丰富的游戏动作与角色资源。更重要的是。这些资源都是免费的！你只需要申请一个免费的Adobe账号就能拥有它。
 
+### 使用blender+ridigy导出动画 ###
+**非常重要!**
+https://www.youtube.com/watch?v=jiXwDxCZtOc
+解决FBX很多常见的问题
+
 ### 动画偏移 ###
 
 动画偏移即在一个pose中根据一些参数混合多个pose。可以实现如角色转头。枪指向的目标和玩家想要指向的一致。一样的效果。
