@@ -38,7 +38,7 @@ $ git commit
 :wq 结束编辑
 #简洁提交
 $ git commit -m [message]#平时更贱推荐的方法，不方便做出比较复杂的格式只能一行，不允许有空格，换行使用\n转义字符
-
+user
 #将代码提交到远程
 $ git push
 #如果出现文件冲突，会导致push被拒绝。解决方案是git pull远程代码后检查冲突文件并手动解决，然后再走一遍add —> commit —> push
@@ -83,3 +83,7 @@ $ git branch -d dev
 ---------
 
 知道以上几点即可简单方便的使用git工具进行团队开发了。
+
+## 使用GUI进行git管理
+在个人版已经推荐过了`github的git客户端`，但是在团队协作，特别是多人单分支团队协作中优势很不明显，无法很直观的看见各个协作者的提交情况。这里推荐另一款git图形化界面客户端：
+[GitKraken](https://www.gitkraken.com/)
