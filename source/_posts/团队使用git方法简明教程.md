@@ -86,4 +86,7 @@ $ git branch -d dev
 
 ## 使用GUI进行git管理
 在个人版已经推荐过了`github的git客户端`，但是在团队协作，特别是多人单分支团队协作中优势很不明显，无法很直观的看见各个协作者的提交情况。这里推荐另一款git图形化界面客户端：
+
+[gitg](https://wiki.gnome.org/Apps/Gitg/)
 [GitKraken](https://www.gitkraken.com/)
+PS:GitKraken默认会自动设置所有项目的作者信息为统一。多身份项目的用户需要注意一下
