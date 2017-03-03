@@ -29,7 +29,7 @@ date: 2016-09-29 19:04:54
 ### 使用blender+ridigy导出动画 ###
 **非常重要!**
 https://www.youtube.com/watch?v=jiXwDxCZtOc
-解决FBX很多常见的问题
+解决Blender与Unreal接合时的很多奇怪的问题
 
 ### 动画偏移 ###
 
