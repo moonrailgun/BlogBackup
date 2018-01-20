@@ -12,6 +12,7 @@ tags:
 - 在iOS9之后，网络请求默认为Https请求，如需支持Http，修改info.plist文件添加键值对设置允许http访问
 ![/images/react/001.png](/images/react/001.png)
 - 编译后抛出错误`$export is not a function`,原因: react-native 无法正常使用babel的runtime-transform插件,原因不明
+- react-native安卓端允许的最大长计时器时间为60000ms,而socket.io默认ping计时器为85000ms.为了解决这个警告你需要在服务端设置`pingInterval(默认25000)`和`pingTimeout(默认60000)`使两者之和小于等于60000ms
 
 ## 路由react-navigation
 
