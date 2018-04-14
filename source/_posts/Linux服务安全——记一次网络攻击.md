@@ -39,9 +39,9 @@ sudo service sshd restart
 
 ## 解决方案
 - yum update
-- 增加第二管理员
+- 增加第二管理员账号
 - 增加第二管理员sudo权限
-- 禁止root用户直接登录
+- 禁止root用户直接通过ssh登录
 - 关闭密码登录，使用秘钥对登录
 - 配置iptables(可选)
 
