@@ -3,10 +3,14 @@ date: 2018-07-03 14:41:32
 ---
 
 ## devbox开发者工具箱 ##
-![](./Otaku/logo-web.png)
 ### 一款专为开发者准备的前端工具箱 ###
 基于electron+vue
 github:[https://github.com/moonrailgun/devbox](https://github.com/moonrailgun/devbox)
+
+## Yoa ##
+### 前端mvvm框架 ###
+学习用, 功能简单。只有模板中变量修改更新页面的功能
+github:[https://github.com/yoajs/yoa](https://github.com/yoajs/yoa)
 
 ## Otaku! ##
 ![](./Otaku/logo-web.png)
