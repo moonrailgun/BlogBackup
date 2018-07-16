@@ -1,5 +1,5 @@
 title: ReactNative踩坑记录
-date: 2018-01-11 11:18:21
+date: 2018-07-16 11:19:59
 tags:
 - React
 - ReactNative
@@ -20,3 +20,15 @@ tags:
 
 - 路由插件解析需要依赖`babel-preset-react-native`插件:确保`.babelrc`文件中有`"presets": ["react-native"]`。否则会抛出语法错误
 - 当使用`redux`嵌套多个`Navigator`的时候。如果外面是一个`StackNavigator`然后子路由是一个`DrawerNavigator`或`TabNavigator`会抛出异常`Cannot read property 'undefined' of undefined`。解决方案:[react-navigation#issues#1919](https://github.com/react-navigation/react-navigation/issues/1919#issuecomment-313060644)
+
+## 编译打包
+
+安卓: `cd android && ./gradlew assembleRelease`
+
+- 当使用64位linux系统打包时抛出找不到`aapt`, 如果该路径下有aapt文件的话那么则是64位系统的问题。apktool需要32位编译环境。安装`ia32-libs`即可解决问题，如为centos则使用命令`yum install libstdc++.i686 glibc.i686 zlib.i686`
+- 如出现`:app:bundleReleaseJsAndAssets` 错误。可能是由于系统配置过低导致的编译文件超时的问题。解决方案是手动编译js文件后再打包
+> ```bash
+> mkdir -p android/app/build/intermediates/assets/release
+> mkdir -p android/app/build/intermediates/res/merged
+> node node_modules/react-native/local-cli/cli.js bundle --platform android --dev false --reset-cache --entry-file src/app/index.js --bundle-output android/app/build/intermediates/assets/release/index.android.bundle --assets-dest android/app/build/intermediates/res/merged/release
+> ```
