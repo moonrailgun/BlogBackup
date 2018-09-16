@@ -16,7 +16,7 @@ tags:
 使用完以后执行`SET FOREIGN_KEY_CHECKS = 1;`回到正常状态。
 
 **列出所有的表的清除语句**:
-```sql
+```
 SELECT concat('DROP TABLE IF EXISTS ', table_name, ';')
 FROM information_schema.tables
 WHERE table_schema = 'MyDatabaseName'; -- MyDatabaseName需要替换为要列出的数据库名
