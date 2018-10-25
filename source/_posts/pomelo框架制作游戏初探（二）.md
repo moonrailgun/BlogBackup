@@ -4,7 +4,7 @@ tags:
   - 游戏开发
   - WhiteWord
   - NodeJS
-date: 2015-12-09 13:58:39 
+date: 2015-12-09 13:58:39
 ---
 
 
@@ -112,7 +112,7 @@ function(){
 初始化pomelo连接后，向服务器的`gate.gateHandler.queryEntry`请求数据，传递参数为`{uid: 1}`。
 
 ### 服务端 ###
-** /game-server/app/servers/gate/handler/gateHandler.js **修改代码如下:
+** /game-server/app/servers/gate/handler/gateHandler.js **修改代码如下**:
 ```javascript
 var Code = require('../../../../../shared/code');
 
@@ -167,7 +167,7 @@ module.exports = {
 
 ## 客户端处理登陆请求 ##
 好了。基本的请求分配服务器已经完成了。但是我们不能直接这么用。我们需要一个用户管理器去验证用户的账号密码，管理角色信息等等。这一部分和普通的网页是一致的。因此完全可以放在前端代码中写。`web-server`是基于express写的web服务器。这里直接在其中添加对账号与密码的验证。因为与pomelo框架无关所以不多累述。直接放出代码
-**/web-server/app.js**添加
+**/web-server/app.js** 添加
 ```javascript
 //登陆
 app.post('/login', function(req, res) {
@@ -222,4 +222,4 @@ app.post('/register', function(req, res) {
     });
 });
 ```
-其中**userDao**是数据库用户管理对象。根据自己数据库来编写，用户从数据库中存取用户数据
+其中 **userDao** 是数据库用户管理对象。根据自己数据库来编写，用户从数据库中存取用户数据
