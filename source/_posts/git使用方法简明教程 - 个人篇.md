@@ -1,4 +1,4 @@
-title: 个人使用git方法简明教程
+title: git使用方法简明教程 - 个人篇
 date: 2015-12-19 11:45:29
 tags:
 - git
