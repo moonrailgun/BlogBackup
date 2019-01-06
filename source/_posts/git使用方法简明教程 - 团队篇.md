@@ -64,3 +64,14 @@ $ git rebase dev
 如果想要中断rebase的过程，使用`git rebase --abort`
 
 然后你就能很方便的把moonrailgun分支合并到dev分支上了，并且代码的历史线会很干净。
+
+*P.S.*: 如果团队在分支上进行代码操作，那么常常会出现代码不同步的问题。那么为了保证代码分支线的干净。最好不要使用`git pull`命令(因为这会留下一个合并的commit点)。推荐的操作如下:
+
+```bash
+$ git fetch
+$ git log origin/master
+# 查看最新的远程commit的hash值。复制下来
+$ git rebase <hash>
+```
+
+这样可以完美的处理单分支多用户进行代码提交。
