@@ -32,3 +32,7 @@ npm ERR! unauthorized Login first: -/user/org.couchdb.user:moonrailgun/-rev/unde
 如果发生这种情况那么你有可能是因为升级到了`npm@5`。解决方案要么降级npm，要么进行一下npm配置。因为`npm@5`以后默认为生产环境。尝试输入：  
 `npm config set -g production false`  
 来解决这个问题
+
+- 相对路径过长导致无法很方便的定位路径
+
+除了在webpack、babel等工具定义绝对路径的map以外，package.json文件也能提供类似的子包管理的功能。详见文章:[How to Use Absolute Paths in React Native](https://medium.com/@davidjwoody/how-to-use-absolute-paths-in-react-native-6b06ae3f65d1)
