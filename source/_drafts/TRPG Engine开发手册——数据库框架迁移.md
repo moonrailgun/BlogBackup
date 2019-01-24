@@ -17,7 +17,8 @@ TRPG Engine一开始设计是基于[node-orm](https://github.com/dresende/node-o
 迁移的理由:
 - `sequelize`具有更加规范化的文档，便于学习
 - `sequelize`天生支持`Promise`，而`node-orm`4版本以后虽然也支持`Promise`但是因为原函数为回调形式因此若要使用`find`的`Promise`版本需要使用`findAsync`
-- `sequelize`对连接池的支持更加好，并天然支持事务。
+- `sequelize`对连接池的支持更加好，并能很大程度上减少数据库连接释放的问题。
+- `sequelize`天生支持事务，但`node-orm`需要第三方插件。
 - `sequelize`天生继承了一些中大型后台项目需要的一些特性如`timestamp`, `migrations`。而`node-orm`只有第三方开发者提供的插件，并没有官方支持。
 - `node-orm`是一个很老的项目了，开发者的维护已经不在提供维护了，对于一些问题可能没法得到很好地解决。而`sequelize`的开发社区依旧非常活跃
 - `sequelize`的star数是所有node的orm框架中最高，同类的orm还有[bookshelf](https://github.com/bookshelf/bookshelf), [persistencejs](https://github.com/coresmart/persistencejs)
