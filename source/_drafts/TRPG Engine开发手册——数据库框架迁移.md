@@ -22,3 +22,14 @@ TRPG Engine一开始设计是基于[node-orm](https://github.com/dresende/node-o
 - `sequelize`天生继承了一些中大型后台项目需要的一些特性如`timestamp`, `migrations`。而`node-orm`只有第三方开发者提供的插件，并没有官方支持。
 - `node-orm`是一个很老的项目了，开发者的维护已经不在提供维护了，对于一些问题可能没法得到很好地解决。而`sequelize`的开发社区依旧非常活跃
 - `sequelize`的star数是所有node的orm框架中最高，同类的orm还有[bookshelf](https://github.com/bookshelf/bookshelf), [persistencejs](https://github.com/coresmart/persistencejs)
+
+## 迁移手册
+
+### 注册方式
+
+
+### 连接方式
+首先`sequelize`是没有connect的概念的。它不像`node-orm`一样是需要在访问前先连接连接池。而是直接在操作连接实例上注册后操作数据库model即可。因此需要变更的部分为:
+- 去除所有的connect方法
+- 调整model的注册方式
+- 直接返回给各个event app.storage.db， 而不是创建连接后的值。
