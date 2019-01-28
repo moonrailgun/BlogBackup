@@ -40,5 +40,8 @@ TRPG Engine一开始设计是基于[node-orm](https://github.com/dresende/node-o
 但是`node-orm`将其设定为两个接口，即hasOne和hasMany。其中hasOne同时可以是一对一关系和一对多关系  
 迁移到`sequelize`时需要手动改写相对的关系，这一点无法借助重写方法的实现，因为`sequelize`同样有hasOne和hasMany接口且其意义不同。因此为了防止二义性，应当手动改写其方法。
 
+### Hooks
+`sequelize`框架定义的hooks参数是(instance, options)。而`node-orm`则是(next)。给this设定了当前实例。这是由于两者的设计思路决定的。为了防止二义性应当手动修改hooks的定义
+
 ### 数据库模型实例方法
 在`node-orm`中模型的实例方法是在定义时的第二个参数中传入一个methods中的对象实现的，而`sequelize`是通过注册到模型对象的原型链`prototype`中实现。因此可以进行一个别名操作，即在注册数据库对象时重新定义define方法。将第二个参数的method提取出来并进行统一赋值。
