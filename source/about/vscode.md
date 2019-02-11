@@ -47,6 +47,7 @@ title: VSCode配置记录
     "files.trimTrailingWhitespace": false,
     "search.location": "panel",
     "ActiveFileInStatusBar.fullpath": false,
-    "editor.fontSize": 14
+    "editor.fontSize": 14,
+    "git.autofetch": true
 }
 ```
