@@ -6,10 +6,12 @@ title: VSCode配置记录
 - Activitus Bar
 - Atom Keymap
 - Atom One Dark Theme
+- Clock in status bar
 - BreadCrumb in StatusBar
 - Debugger for Chrome
 - EditorConfig for VS Code
 - file-icons
+- GitLens - Git supercharged
 - Prettier - Code formatter
 - SQLTools - Database tools
 - Todo Tree
@@ -37,7 +39,8 @@ title: VSCode配置记录
         "scm": "repo-forked",
         "debug": "bug",
         "extensions": "package",
-        "extension.SQLTools-connectionExplorer": "database"
+        "extension.SQLTools-connectionExplorer": "database",
+        "extension.gitlens": "git-compare"
     },
     "activitusbar.toggleSidebar": false,
     "sqltools.showStatusbar": false,
@@ -48,6 +51,7 @@ title: VSCode配置记录
     "search.location": "panel",
     "ActiveFileInStatusBar.fullpath": false,
     "editor.fontSize": 14,
-    "git.autofetch": true
+    "git.autofetch": true,
+    "gitlens.currentLine.enabled": false
 }
 ```
