@@ -2,6 +2,7 @@ title: VSCode配置记录
 ---
 
 **Extensions**
+- Active File in StatusBar
 - Activitus Bar
 - Atom Keymap
 - Atom One Dark Theme
@@ -44,6 +45,8 @@ title: VSCode配置记录
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.trimTrailingWhitespace": false,
-    "search.location": "panel"
+    "search.location": "panel",
+    "ActiveFileInStatusBar.fullpath": false,
+    "editor.fontSize": 14
 }
 ```
