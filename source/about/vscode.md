@@ -52,6 +52,12 @@ title: VSCode配置记录
     "ActiveFileInStatusBar.fullpath": false,
     "editor.fontSize": 14,
     "git.autofetch": true,
-    "gitlens.currentLine.enabled": false
+    "workbench.settings.useSplitJSON": true,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.currentLine.enabled": false,
+    "problems.decorations.enabled": false, // 仅取消问题的explorer.decorations
+    "[typescript]": {
+        "editor.formatOnSave": true
+    }
 }
 ```
