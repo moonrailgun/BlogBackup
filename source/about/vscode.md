@@ -26,7 +26,7 @@ title: VSCode配置记录
     "editor.renderControlCharacters": false,
     "atomKeymap.promptV3Features": true,
     "editor.multiCursorModifier": "ctrlCmd",
-    "editor.formatOnPaste": true,
+    "editor.formatOnPaste": false,
     "workbench.iconTheme": "file-icons",
     "git.confirmSync": false,
     "editor.tabSize": 2,
@@ -58,6 +58,14 @@ title: VSCode配置记录
     "problems.decorations.enabled": false, // 仅取消问题的explorer.decorations
     "[typescript]": {
         "editor.formatOnSave": true
-    }
+    },
+    "[typescriptreact]": {
+        "editor.formatOnSave": true
+    },
+    "prettier.requireConfig": true,
+    "prettier.singleQuote": true,
+    "liveshare.showInStatusBar": "whileCollaborating",
+    "gitlens.blame.dateFormat": "YYYY-DD-MM",
+    "gitlens.blame.format": "${date|10?} ${author|10-}",
 }
 ```
