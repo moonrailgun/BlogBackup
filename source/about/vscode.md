@@ -51,7 +51,7 @@ title: VSCode配置记录
     "search.location": "panel",
     "ActiveFileInStatusBar.fullpath": false,
     "editor.fontSize": 14,
-    "git.autofetch": true,
+    "git.autofetch": false,
     "workbench.settings.useSplitJSON": true,
     "gitlens.codeLens.enabled": false,
     "gitlens.currentLine.enabled": false,
