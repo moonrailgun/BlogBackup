@@ -70,7 +70,7 @@ title: VSCode配置记录
     "prettier.requireConfig": true,
     "prettier.singleQuote": true,
     "liveshare.showInStatusBar": "whileCollaborating",
-    "gitlens.blame.dateFormat": "YYYY-DD-MM",
+    "gitlens.blame.dateFormat": "YYYY-MM-DD",
     "gitlens.blame.format": "${date|10?} ${author|10-}",
 }
 ```
