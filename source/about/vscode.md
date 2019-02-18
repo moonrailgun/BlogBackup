@@ -47,7 +47,7 @@ title: VSCode配置记录
     "sqltools.telemetry": false,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": false,
+    "files.trimTrailingWhitespace": true,
     "search.location": "panel",
     "ActiveFileInStatusBar.fullpath": false,
     "editor.fontSize": 14,
@@ -61,6 +61,11 @@ title: VSCode配置记录
     },
     "[typescriptreact]": {
         "editor.formatOnSave": true
+    },
+    "[markdown]": {
+        "editor.wordWrap": "on",
+        "editor.quickSuggestions": false,
+        "files.trimTrailingWhitespace": false,
     },
     "prettier.requireConfig": true,
     "prettier.singleQuote": true,
