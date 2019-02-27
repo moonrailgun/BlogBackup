@@ -16,6 +16,7 @@ title: VSCode配置记录
 - Todo Tree
 - Vetur
 - VS Live Share
+- vscode-styled-components
 
 **User Setting**:
 ```javascript
