@@ -69,5 +69,6 @@ title: VSCode配置记录
   "liveshare.showInStatusBar": "whileCollaborating",
   "gitlens.blame.dateFormat": "YYYY-MM-DD",
   "gitlens.blame.format": "${date|10?} ${author|10-}",
+  "editor.acceptSuggestionOnCommitCharacter": false,
 }
 ```
