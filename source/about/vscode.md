@@ -7,12 +7,12 @@ title: VSCode配置记录
 - Atom Keymap
 - Atom One Dark Theme
 - Clock in status bar
-- BreadCrumb in StatusBar
 - Debugger for Chrome
 - EditorConfig for VS Code
 - file-icons
 - GitLens - Git supercharged
 - Prettier - Code formatter
+- Settings Sync
 - Todo Tree
 - TSLint
 - Vetur
@@ -76,3 +76,7 @@ title: VSCode配置记录
   }
 }
 ```
+
+**Gist**
+Sync with plugin: [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
+https://gist.github.com/moonrailgun/73189a0e0676518370e2deb096225d0f
