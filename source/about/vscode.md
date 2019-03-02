@@ -14,6 +14,7 @@ title: VSCode配置记录
 - GitLens - Git supercharged
 - Prettier - Code formatter
 - Todo Tree
+- TSLint
 - Vetur
 - VS Live Share
 - vscode-styled-components
@@ -70,5 +71,8 @@ title: VSCode配置记录
   "gitlens.blame.dateFormat": "YYYY-MM-DD",
   "gitlens.blame.format": "${date|10?} ${author|10-}",
   "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  }
 }
 ```
