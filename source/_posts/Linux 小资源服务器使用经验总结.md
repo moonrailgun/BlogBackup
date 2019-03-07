@@ -21,3 +21,17 @@ date: 2019-03-01 17:16:35
 
 ##### 第三部: 应用交换文件
 使用命令`swapon /opt/swapfile`将该交换空间应用到系统中。此时执行`free -h`可以看到swap一行多出了1GB空间
+
+
+### 交换空间应该设定多大？
+
+| 实际内存 | 推荐交换空间 | 推荐交换空间(开启休眠模式) |
+| ------- | ---------- | --------------------- |
+| ⩽ 2GB   | 2倍        | 3倍          |
+| 2GB - 8GB | 1倍      | 2倍          |
+| 8GB - 64GB | 至少4GB | 1.5倍        |
+| > 64GB  | 至少4GB    | 不推荐        |
+
+参考文章:
+- [redhat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/installation_guide/s2-diskpartrecommend-ppc)
+- [ubuntu](https://help.ubuntu.com/community/SwapFaq)
