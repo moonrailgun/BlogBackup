@@ -15,7 +15,7 @@ timezone: Asia/Shanghai
 url: http://www.moonrailgun.com
 root: /
 # permalink: :year/:month/:day/:title/
-permalink: post/:abbrlink/
+permalink: posts/:abbrlink/
 permalink_defaults:
 
 # abbrlink config
