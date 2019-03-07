@@ -1,10 +1,11 @@
+---
 title: 解决Unity跑酷模板Endless Run中shader报错的问题
-date: 2016-04-21 10:00:25 
 tags:
-- Unity
-- 游戏开发
-- Shader
-
+  - Unity
+  - 游戏开发
+  - Shader
+abbrlink: '49910e89'
+date: 2016-04-21 10:00:25
 ---
 
 对于shader问题。很多处于中低级的Unity开发者都束手无策。在使用Endless Run模板项目的时候会出现报错：

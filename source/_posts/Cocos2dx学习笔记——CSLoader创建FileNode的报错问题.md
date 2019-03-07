@@ -1,10 +1,11 @@
+---
 title: Cocos2dx学习笔记——CSLoader创建FileNode的报错问题
-date: 2016-03-15 16:05:59 
 tags:
-- cocos2dx
-- CSLoader
-- 游戏开发
-
+  - cocos2dx
+  - CSLoader
+  - 游戏开发
+abbrlink: 531c197b
+date: 2016-03-15 16:05:59
 ---
 
 使用`CSLoader::createNode("IndexScene.csb");`创建节点时发生错误。原因在于文件节点。其结构如下：

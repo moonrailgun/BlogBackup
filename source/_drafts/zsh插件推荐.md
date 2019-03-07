@@ -1,8 +1,9 @@
+---
 title: zsh插件推荐
-date: 2019-01-18 14:18:47
 tags:
-- ohmyzsh
-
+  - ohmyzsh
+abbrlink: c2b55725
+date: 2019-01-18 14:18:47
 ---
 
 ## 依赖

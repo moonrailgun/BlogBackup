@@ -1,9 +1,11 @@
+---
 title: pomelo框架制作游戏初探(二) - 登陆模块
 tags:
   - pomelo
   - 游戏开发
   - WhiteWord
   - NodeJS
+abbrlink: fa08ab46
 date: 2015-12-09 13:58:39
 ---
 

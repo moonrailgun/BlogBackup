@@ -1,9 +1,10 @@
+---
 title: iOS编程——让NSURL认识特殊字符
 tags:
   - iOS
   - NSURL
-date: 2016-06-04 17:01:43  
-
+abbrlink: 61ce6e4d
+date: 2016-06-04 17:01:43
 ---
 
 正如我之前所说。其实`NSURL(string:String)`这个用法对于输入参数的字符串验证是很蠢的。因为他有自己的一套判定机制。比如在Github API编程中使用如下网址：

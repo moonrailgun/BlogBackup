@@ -1,11 +1,12 @@
+---
 title: Cocos2dx学习笔记——Ref对象管理之保留与释放
-date: 2016-04-07 18:09:03 
 tags:
-- cocos2dx
-- Ref
-- autorelease
-- 游戏开发
-
+  - cocos2dx
+  - Ref
+  - autorelease
+  - 游戏开发
+abbrlink: 922ef0f9
+date: 2016-04-07 18:09:03
 ---
 
 在Cocos中，我们一切的智能类都继承于Ref引用类。方便内存的优化与管理。这是推荐的自定义类方法。

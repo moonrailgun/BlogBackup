@@ -1,10 +1,12 @@
+---
 title: pomelo框架制作游戏初探(一)
+tags:
+  - pomelo
+  - 游戏开发
+  - WhiteWord
+  - NodeJS
+abbrlink: 2d40853
 date: 2015-11-26 15:29:34
-tags: 
-- pomelo
-- 游戏开发
-- WhiteWord
-- NodeJS
 ---
 ## 前言 ##
 很早就关注过NodeJS的高性能服务端开发。所以很早就想要用NodeJS作为后台服务器来开发一款网络游戏。

@@ -1,9 +1,10 @@
+---
 title: MikuMikuCombat开发笔记 - 武器
 tags:
   - MikuMikuCombat
-  - 开发笔记  
-date: 2016-10-26 9:44:05 
-
+  - 开发笔记
+abbrlink: bf34fac6
+date: 2016-10-26 09:44:05
 ---
 
 # 概述 #

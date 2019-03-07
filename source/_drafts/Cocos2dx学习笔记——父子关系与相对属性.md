@@ -1,9 +1,10 @@
+---
 title: Cocos2dx学习笔记——父子关系与相对属性
-date: 2016-04-02 14:45:33 
 tags:
-- cocos2dx
-- 父子关系
-
+  - cocos2dx
+  - 父子关系
+abbrlink: 5b0764a
+date: 2016-04-02 14:45:33
 ---
 
 关于cocos2dx的node父子关系。通过长期实验可以得出以下结论：

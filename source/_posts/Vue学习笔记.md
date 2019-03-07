@@ -1,8 +1,9 @@
+---
 title: Vue学习笔记
 tags:
-  - Vue  
-date: 2018-09-04 13:36:16  
-
+  - Vue
+abbrlink: 71513ccb
+date: 2018-09-04 13:36:16
 ---
 
 ## 概述 ##

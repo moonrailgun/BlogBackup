@@ -1,10 +1,11 @@
+---
 title: Linux 小资源服务器使用经验总结
 tags:
   - Linux
   - Swap
   - OOM Killer
+abbrlink: 6769ba51
 date: 2019-03-01 17:16:35
-
 ---
 
 
@@ -14,7 +15,7 @@ date: 2019-03-01 17:16:35
 这个时候我们就可以使用交换内存来用磁盘空间换内存了。
 
 ##### 第一步: 创建一个空白文件
-使用命令`dd if=/dev/zero of=/opt/swapfile bs=1M count=1024`来创建一个1GB的空白文件到`/opt/swapfile`。同样的可以按照这个方法创建其他大小的空白文件。我一般会创建和内存一样大小的交换控件
+使用命令`dd if=/dev/zero of=/opt/swapfile bs=1M count=1024`来创建一个1GB的空白文件到`/opt/swapfile`。同样的可以按照这个方法创建其他大小的空白文件。我一般会创建和内存一样大小的交换空间
 
 ##### 第二步: 创建交换空间
 使用命令`mkswap /opt/swapfile`来将这个空白文件变成一个swap文件。只有该文件才能将对应的磁盘空间作为一个临时内存。

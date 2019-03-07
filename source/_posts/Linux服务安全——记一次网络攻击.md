@@ -1,8 +1,10 @@
-title: Linux服务安全——记一次网络攻击  
+---
+title: Linux服务安全——记一次网络攻击
 tags:
-  - Linux  
-  - 安全  
-date: 2018-4-14 14:02:47
+  - Linux
+  - 安全
+abbrlink: 61069dee
+date: 2018-04-14 14:02:47
 ---
 
 ## 背景  

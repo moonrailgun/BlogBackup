@@ -1,9 +1,10 @@
+---
 title: Unreal学习笔记 - 使用JoinSession成功加入服务器但是无法跳转到服务器当前地图
 tags:
-  - Unreal  
+  - Unreal
   - Session
-date: 2016-10-06 16:13:54 
-
+abbrlink: '67516082'
+date: 2016-10-06 16:13:54
 ---
 
 ## 现象 ##

@@ -1,6 +1,8 @@
-title: Atom编辑器使用记录  
+---
+title: Atom编辑器使用记录
 tags:
-  - atom  
+  - atom
+abbrlink: 546fd07e
 date: 2016-11-18 19:24:08
 ---
 

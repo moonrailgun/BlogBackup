@@ -1,11 +1,12 @@
+---
 title: Cocos2dx学习笔记——编译器提示LINK1104无法打开文件“libcocos2d_2013.lib”的问题
-date: 2016-04-04 20:56:25 
 tags:
-- cocos2dx
-- LINK1104
-- libcocos2d_2013.lib
-- 游戏开发
-
+  - cocos2dx
+  - LINK1104
+  - libcocos2d_2013.lib
+  - 游戏开发
+abbrlink: 664de550
+date: 2016-04-04 20:56:25
 ---
 
 在编译项目的时候可能会出现这样的错误：

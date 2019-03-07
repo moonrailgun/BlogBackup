@@ -1,8 +1,10 @@
+---
 title: node遇见问题汇总
-date: 2017-9-3 18:26:46
 tags:
-- node
-- npm
+  - node
+  - npm
+abbrlink: e5320d32
+date: 2017-09-03 18:26:46
 ---
 
 - 使用`npm adduser`出现错误

@@ -1,10 +1,11 @@
+---
 title: ReactNative踩坑记录
-date: 2018-07-16 11:19:59
 tags:
-- React
-- ReactNative
-- 踩坑
-
+  - React
+  - ReactNative
+  - 踩坑
+abbrlink: 33f59699
+date: 2018-07-16 11:19:59
 ---
 
 ## 原生交互

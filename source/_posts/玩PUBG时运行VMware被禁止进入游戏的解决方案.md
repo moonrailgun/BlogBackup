@@ -1,9 +1,10 @@
+---
 title: 玩PUBG时运行VMware被禁止进入游戏的解决方案
-date: 2019-2-1 16:31:11
 tags:
-- pubg
-- vmware
-
+  - pubg
+  - vmware
+abbrlink: f3750712
+date: 2019-02-01 16:31:11
 ---
 
 ## 起因

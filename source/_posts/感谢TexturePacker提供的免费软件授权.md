@@ -1,8 +1,9 @@
+---
 title: 如何获取TexturePacker 1年免费软件授权
 tags:
   - TexturePacker
-date: 2016-04-04 14:09:17 
-
+abbrlink: e80f349e
+date: 2016-04-04 14:09:17
 ---
 
 怎么说呢。非常感谢[TexturePacker](https://www.codeandweb.com/texturepacker)以及Andreas Loew提供的免费1年授权。为我们这些独立游戏开发者提供了方便。

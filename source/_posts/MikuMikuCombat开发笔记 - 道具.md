@@ -1,9 +1,10 @@
+---
 title: MikuMikuCombat开发笔记 - 道具
 tags:
   - MikuMikuCombat
-  - 开发笔记  
-date: 2016-10-23 13:05:20 
-
+  - 开发笔记
+abbrlink: e6d9d22d
+date: 2016-10-23 13:05:20
 ---
 
 # 概述 #

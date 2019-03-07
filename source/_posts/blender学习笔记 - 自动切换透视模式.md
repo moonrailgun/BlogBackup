@@ -1,8 +1,9 @@
+---
 title: blender学习笔记 - 自动切换透视模式
 tags:
-  - Blender  
-date: 2016-10-08 17:05:31 
-
+  - Blender
+abbrlink: a16e855a
+date: 2016-10-08 17:05:31
 ---
 
 ### 问题概述 ###

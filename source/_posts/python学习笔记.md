@@ -1,7 +1,9 @@
+---
 title: python学习笔记
-date: 2018-02-10 10:25:23
 tags:
-- python
+  - python
+abbrlink: 743c31e9
+date: 2018-02-10 10:25:23
 ---
 
 ## Flask

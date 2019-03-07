@@ -1,9 +1,10 @@
+---
 title: 如何配置Apache虚拟主机服务
 tags:
   - Apache
   - PHP
-date: 2017-6-14 13:54:09
-
+abbrlink: 484f55d5
+date: 2017-06-14 13:54:09
 ---
 
 ## 前言

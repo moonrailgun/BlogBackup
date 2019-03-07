@@ -1,11 +1,12 @@
+---
 title: Cocos2dx学习笔记——lambda表达式的引用捕获
-date: 2016-04-08 17:47:21 
 tags:
-- cocos2dx
-- c++
-- lambda表达式
-- 游戏开发
-
+  - cocos2dx
+  - c++
+  - lambda表达式
+  - 游戏开发
+abbrlink: 49add7c0
+date: 2016-04-08 17:47:21
 ---
 
 lambda表达式:

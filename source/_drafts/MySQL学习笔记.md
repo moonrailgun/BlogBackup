@@ -1,9 +1,10 @@
+---
 title: MySQL学习笔记
-date: 2018-09-10 14:16:28
 tags:
-- MySQL
-- 学习笔记
-
+  - MySQL
+  - 学习笔记
+abbrlink: f12cbde5
+date: 2018-09-10 14:16:28
 ---
 
 ## 概述

@@ -1,8 +1,9 @@
+---
 title: blender学习笔记 - 常用快捷键
 tags:
-  - Blender  
+  - Blender
+abbrlink: b9028042
 date: 2016-10-13 10:27:36
-
 ---
 
 # 概述 #

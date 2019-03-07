@@ -1,8 +1,9 @@
+---
 title: blender学习笔记 - 权重传递
 tags:
-  - Blender  
-date: 2017-6-16 14:27:05
-
+  - Blender
+abbrlink: 13f139b9
+date: 2017-06-16 14:27:05
 ---
 
 ## 概述

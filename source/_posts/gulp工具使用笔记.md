@@ -1,9 +1,10 @@
+---
 title: gulp工具使用笔记
-date: 2017-5-26 22:48:25
 tags:
-- gulp
-- 前端
-
+  - gulp
+  - 前端
+abbrlink: 82986f1f
+date: 2017-05-26 22:48:25
 ---
 
 gulp是一款非常好用的前端工具，自从用了gulp以后我马上就抛弃了grunt投入的gulp的怀抱。

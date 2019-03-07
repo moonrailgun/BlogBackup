@@ -1,8 +1,9 @@
+---
 title: Unreal学习笔记 - 创建边沿发光材质
 tags:
-  - Unreal  
-date: 2016-11-10 14:50:42 
-
+  - Unreal
+abbrlink: 78c43660
+date: 2016-11-10 14:50:42
 ---
 
 ![/images/unreal/EdgeLightCube.jpg](/images/unreal/EdgeLightCube.jpg)

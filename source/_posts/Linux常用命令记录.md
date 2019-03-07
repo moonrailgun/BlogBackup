@@ -1,8 +1,9 @@
+---
 title: Linux常用命令记录
 tags:
   - Linux
+abbrlink: 30a497b6
 date: 2018-07-06 16:50:37
-
 ---
 
 ## 简介

@@ -1,10 +1,11 @@
+---
 title: JavaScript技巧笔记
-date: 2019-01-08 16:53:48
 tags:
-- js
-- javascript
-- 学习笔记
-
+  - js
+  - javascript
+  - 学习笔记
+abbrlink: 76aa6eed
+date: 2019-01-08 16:53:48
 ---
 
 ### 数据去重

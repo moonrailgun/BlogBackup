@@ -1,8 +1,10 @@
+---
 title: blender渲染笔记 - Cycle渲染
 tags:
   - blender
   - cycle
-date: 2016-12-19 12:51:44  
+abbrlink: 3d280206
+date: 2016-12-19 12:51:44
 ---
 
 # 麦克娘 #

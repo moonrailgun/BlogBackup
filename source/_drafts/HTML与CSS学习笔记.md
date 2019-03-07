@@ -1,12 +1,13 @@
+---
 title: HTML与CSS学习笔记
-date: 2019-01-08 16:46:38
 tags:
-- HTML
-- HTML5
-- CSS
-- CSS3
-- 学习笔记
-
+  - HTML
+  - HTML5
+  - CSS
+  - CSS3
+  - 学习笔记
+abbrlink: 40f46778
+date: 2019-01-08 16:46:38
 ---
 
 主要是记录一些比较边界的问题

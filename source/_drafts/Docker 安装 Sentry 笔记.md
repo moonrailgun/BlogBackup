@@ -1,10 +1,11 @@
+---
 title: Docker 安装 Sentry 笔记
-date: 2019-03-07 14:57:23
 tags:
-- linux
-- Docker
-- docker-compose
-
+  - linux
+  - Docker
+  - docker-compose
+abbrlink: da3a45ef
+date: 2019-03-07 14:57:23
 ---
 
 官方docker仓库链接: [getsentry/onpremise](https://github.com/getsentry/onpremise)

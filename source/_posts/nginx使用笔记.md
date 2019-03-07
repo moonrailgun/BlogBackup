@@ -1,7 +1,9 @@
+---
 title: nginx使用笔记
-date: 2018-07-20 10:05:07
 tags:
-- nginx
+  - nginx
+abbrlink: 5d639031
+date: 2018-07-20 10:05:07
 ---
 
 ## 简介

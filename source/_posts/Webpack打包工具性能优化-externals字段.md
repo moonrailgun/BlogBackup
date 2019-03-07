@@ -1,10 +1,11 @@
+---
 title: Webpack打包工具性能优化 - externals字段
 tags:
-  - Webpack  
-  - ES6  
-  - React  
+  - Webpack
+  - ES6
+  - React
+abbrlink: 5adad9a0
 date: 2017-04-05 10:18:35
-
 ---
 
 ## 前言

@@ -1,9 +1,11 @@
+---
 title: ionic——使用本地代理服务器解决http跨域问题
 tags:
   - ionic
   - http
   - 跨域
-date: 2016-09-02 15:38:38 
+abbrlink: d0f79e7e
+date: 2016-09-02 15:38:38
 ---
 
 在ionic开发中我们常常会遇到http请求相关问题。在设备中我们常用的方法是使用白名单插件`cordova-plugin-whitelist`。通过在`config.xml`中配置`<access origin="*"/>`参数来对http请求进行本地化而解决跨域问题。但是我们在实际开发中我们经常使用`ionic serve`或`ionic run ios -l -c -s`来进行调试工作。使用白名单插件无法正常运行。这里就要使用代理服务器了。

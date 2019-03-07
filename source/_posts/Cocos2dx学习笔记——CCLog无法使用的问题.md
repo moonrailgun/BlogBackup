@@ -1,10 +1,11 @@
+---
 title: Cocos2dx学习笔记——CCLog无法使用的问题
-date: 2016-03-20 12:48:53 
 tags:
-- cocos2dx
-- CCLog
-- 游戏开发
-
+  - cocos2dx
+  - CCLog
+  - 游戏开发
+abbrlink: a79c8a43
+date: 2016-03-20 12:48:53
 ---
 
 在cocos2dx中我们拥有多种调试输出日志的方法：

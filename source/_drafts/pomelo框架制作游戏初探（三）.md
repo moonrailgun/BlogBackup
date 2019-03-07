@@ -1,10 +1,12 @@
+---
 title: pomelo框架制作游戏初探(三) - 聊天功能
 tags:
   - pomelo
   - 游戏开发
   - WhiteWord
   - NodeJS
-date: 2015-12-17 21:11:16 
+abbrlink: 1a8677f
+date: 2015-12-17 21:11:16
 ---
 
 本节开始说明如何用pomelo框架实现具体功能。

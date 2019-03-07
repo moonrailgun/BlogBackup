@@ -1,10 +1,11 @@
+---
 title: Mac中的字符中英文问题
-date: 2016-04-28 12:23:59 
 tags:
-- swift
-- NSURL
-- objective-c
-
+  - swift
+  - NSURL
+  - objective-c
+abbrlink: 862a051d
+date: 2016-04-28 12:23:59
 ---
 
 NSURL 是 OC 或 Swift编程中对http网络通信很常见的一个方法。常用的方法是`NSURL(string: "http://.../")`

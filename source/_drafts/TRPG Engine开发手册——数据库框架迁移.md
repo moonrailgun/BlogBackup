@@ -1,13 +1,14 @@
+---
 title: TRPG Engine开发手册——数据库框架迁移
-date: 2019-01-24 16:36:55
 tags:
-- sequelizejs
-- node-orm
-- TRPG
-- 后台
-- node
-- 数据库
-
+  - sequelizejs
+  - node-orm
+  - TRPG
+  - 后台
+  - node
+  - 数据库
+abbrlink: 74202a7b
+date: 2019-01-24 16:36:55
 ---
 
 ## 为什么要迁移
