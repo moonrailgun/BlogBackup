@@ -4,6 +4,7 @@ tags:
   - linux
   - Docker
   - docker-compose
+  - sentry
 abbrlink: da3a45ef
 date: 2019-03-07 14:57:23
 ---
@@ -25,4 +26,5 @@ date: 2019-03-07 14:57:23
 
 
 ## 遇到小问题
-如果使用nginx是用docker安装的话注意ip地址。nginx的`127.0.0.1`与本机的`127.0.0.1`不同
+- 如果使用nginx是用docker安装的话注意ip地址。nginx的`127.0.0.1`与本机的`127.0.0.1`不同
+- 如果使用nginx转发请求的话。请注意设置`proxy_set_header Host $http_host`，否则会出现用户反馈模块不能正常使用的问题（发送反馈信息时请求地址不正确）
