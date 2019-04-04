@@ -11,7 +11,7 @@ date: 2019-03-07 14:57:23
 
 官方docker仓库链接: [getsentry/onpremise](https://github.com/getsentry/onpremise)
 
-需要资源： 我这边是用了至少`2GB内存+2GB交换空间`才安装完毕。常驻内存占用大约`600MB ~ 800MB`
+需要资源： 我这边是用了至少`2GB内存+2GB交换空间`才安装完毕。常驻内存占用大约`600MB ~ 800MB`, 安装时会消耗比较大的资源去写表。注意OOM， 如遇到这种情况可以参考我的文章[Linux 小资源服务器使用经验总结](/posts/6769ba51/#善用交换内存)
 
 1. `docker volume create --name=sentry-data && docker volume create --name=sentry-postgres` - Make our local database and sentry volumes
     Docker volumes have to be created manually, as they are declared as external to be more durable.
