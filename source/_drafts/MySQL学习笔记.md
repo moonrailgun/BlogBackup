@@ -22,3 +22,13 @@ SELECT concat('DROP TABLE IF EXISTS ', table_name, ';')
 FROM information_schema.tables
 WHERE table_schema = 'MyDatabaseName'; -- MyDatabaseName需要替换为要列出的数据库名
 ```
+
+**修改密码**:
+
+```sql
+-- 使用传统加密方式
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+
+-- 使用默认加密方式
+ALTER user 'root'@'localhost' IDENTIFIED BY 'root'
+```
