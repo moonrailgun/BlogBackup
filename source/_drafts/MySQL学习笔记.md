@@ -11,6 +11,22 @@ date: 2018-09-10 14:16:28
 
 主要是记录一下在日常使用mysql遇到的一些问题和解决方案。
 
+## 创建数据库并指定编码信息
+
+**utf8**
+`CREATE DATABASE IF NOT EXISTS <yourdbname> DEFAULT CHARSET utf8 COLLATE utf8_general_ci;`
+
+**gbk**
+`CREATE DATABASE IF NOT EXISTS <yourdbname> DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci;`
+
+#### 关于 CHARSET 和 CHARACTER SET 的区别
+
+```
+前者包含：client | result | connection
+后者包影响的就：connection
+```
+
+
 ## 如何清除有外键关联关系的表
 
 解决方案: 只要在当前session执行`SET FOREIGN_KEY_CHECKS = 0;`即可忽略外键检查。然后就可以随意清除数据表了。  
