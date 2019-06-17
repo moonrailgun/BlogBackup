@@ -1,5 +1,5 @@
 ---
-title: ReactNative踩坑记录
+title: ReactNative踩坑记录与学习笔记
 tags:
   - React
   - ReactNative
@@ -33,3 +33,18 @@ date: 2018-07-16 11:19:59
 > mkdir -p android/app/build/intermediates/res/merged
 > node node_modules/react-native/local-cli/cli.js bundle --platform android --dev false --reset-cache --entry-file src/app/index.js --bundle-output android/app/build/intermediates/assets/release/index.android.bundle --assets-dest android/app/build/intermediates/res/merged/release
 > ```
+
+## 测试环境使用独立包名(Android)
+
+*android/app/build.gradle*
+```
+android {
+  buildTypes {
+    debug {
+      applicationIdSuffix ".test"
+    }
+  }
+}
+```
+
+即在debug模式下。为包名增加后缀`.test`。
