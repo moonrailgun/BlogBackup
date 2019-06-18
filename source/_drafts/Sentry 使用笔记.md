@@ -1,5 +1,5 @@
 ---
-title: Docker 安装 Sentry 笔记
+title: Sentry 使用笔记
 tags:
   - linux
   - Docker
@@ -8,6 +8,8 @@ tags:
 abbrlink: da3a45ef
 date: 2019-03-07 14:57:23
 ---
+
+## 从 Docker 安装
 
 官方docker仓库链接: [getsentry/onpremise](https://github.com/getsentry/onpremise)
 
@@ -25,6 +27,12 @@ date: 2019-03-07 14:57:23
 7. Access your instance at `localhost:9000`!
 
 
-## 遇到小问题
+### 遇到小问题
 - 如果使用nginx是用docker安装的话注意ip地址。nginx的`127.0.0.1`与本机的`127.0.0.1`不同
 - 如果使用nginx转发请求的话。请注意设置`proxy_set_header Host $http_host`，否则会出现用户反馈模块不能正常使用的问题（发送反馈信息时请求地址不正确）
+
+## 上传sourcemap的问题
+
+#### 上传文件返回413
+
+可能是sourcemap文件过大导致。Nginx默认上传文件大小1m, 使用`client_max_body_size 20m;`修改默认大小

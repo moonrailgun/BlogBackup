@@ -48,3 +48,19 @@ android {
 ```
 
 即在debug模式下。为包名增加后缀`.test`。
+
+## 在gradle.properties中保存敏感信息
+
+因为`gradle.properties`可能会同时存在项目需要的信息与敏感信息。为了不把敏感数据上传到版本控制仓库，可以考虑使用git的命令
+
+```bash
+git update-index --assume-unchanged android/gradle.properties
+```
+
+使用方式是先提交需要上传的部分，然后执行上述命令即可
+
+撤销标识
+
+```bash
+git update-index --no-assume-unchanged android/gradle.properties
+```
