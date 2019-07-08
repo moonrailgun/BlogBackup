@@ -27,7 +27,7 @@ date: 2018-07-16 11:19:59
 安卓: `cd android && ./gradlew assembleRelease`
 
 - 当使用64位linux系统打包时抛出找不到`aapt`, 如果该路径下有aapt文件的话那么则是64位系统的问题。apktool需要32位编译环境。安装`ia32-libs`即可解决问题，如为centos则使用命令`yum install libstdc++.i686 glibc.i686 zlib.i686`
-- 如出现`:app:bundleReleaseJsAndAssets` 错误。可能是由于系统配置过低导致的编译文件超时的问题。解决方案是手动编译js文件后再打包
+- 如出现`:app:bundleReleaseJsAndAssets` 错误。可能是由于系统配置过低导致的编译文件超时的问题。解决方案是手动编译js文件后再打包(使用`-x ":app:bundleReleaseJsAndAssets"`参数跳过)
 > ```bash
 > mkdir -p android/app/build/intermediates/assets/release
 > mkdir -p android/app/build/intermediates/res/merged
