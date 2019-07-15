@@ -36,3 +36,8 @@ date: 2019-03-01 17:16:35
 参考文章:
 - [redhat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/installation_guide/s2-diskpartrecommend-ppc)
 - [ubuntu](https://help.ubuntu.com/community/SwapFaq)
+
+
+### 其他
+
+- `swapoff -a` 移除所有的swap内存空间

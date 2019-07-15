@@ -39,7 +39,7 @@ FROM information_schema.tables
 WHERE table_schema = 'MyDatabaseName'; -- MyDatabaseName需要替换为要列出的数据库名
 ```
 
-**修改密码**:
+## 修改密码
 
 ```sql
 -- 使用传统加密方式
