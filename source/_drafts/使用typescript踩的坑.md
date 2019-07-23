@@ -3,7 +3,8 @@ title: 使用typescript踩的坑
 tags:
   - typescript
   - javascript
-date: 2019-6-7 17:47:59
+abbrlink: 950cb759
+date: 2019-06-07 17:47:59
 ---
 
 ## 简介
