@@ -38,3 +38,8 @@ npm ERR! unauthorized Login first: -/user/org.couchdb.user:moonrailgun/-rev/unde
 - 相对路径过长导致无法很方便的定位路径
 
 除了在webpack、babel等工具定义绝对路径的map以外，package.json文件也能提供类似的子包管理的功能。详见文章:[How to Use Absolute Paths in React Native](https://medium.com/@davidjwoody/how-to-use-absolute-paths-in-react-native-6b06ae3f65d1)
+
+
+- 在多包共存的项目中，明明两个对象看上去一模一样但是不相等
+
+需要检查一下这两个对象是否来自于不同的包。这个问题很难被发现，因为没有好的办法去检查一个对象的来源。需要人肉检查
