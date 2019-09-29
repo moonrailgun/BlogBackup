@@ -2,6 +2,7 @@
 title: Linux好用应用记录
 tags:
   - Linux
+abbrlink: 879c760d
 date: 2019-09-25 09:32:04
 ---
 

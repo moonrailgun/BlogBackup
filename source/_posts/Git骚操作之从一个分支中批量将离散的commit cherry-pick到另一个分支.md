@@ -3,6 +3,7 @@ title: Git骚操作之从一个分支中批量将离散的commit 迁移到另一
 tags:
   - git
   - cherry-pick
+abbrlink: ec6df031
 date: 2019-09-29 16:16:28
 ---
 
