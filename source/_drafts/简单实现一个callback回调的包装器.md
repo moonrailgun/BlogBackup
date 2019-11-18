@@ -3,6 +3,7 @@ title: 简单实现一个callback回调的包装器
 tags:
   - callback
   - javascript
+abbrlink: 2a644d07
 date: 2019-09-30 16:42:58
 ---
 
