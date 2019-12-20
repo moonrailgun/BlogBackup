@@ -2,6 +2,7 @@
 title: Vim 环境搭建笔记
 tags:
   - vim
+abbrlink: 49d9534d
 date: 2019-12-05 16:23:23
 ---
 

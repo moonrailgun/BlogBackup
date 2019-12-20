@@ -5,6 +5,9 @@
   "hexo": {
     "version": "3.7.1"
   },
+  "scripts": {
+    "start": "hexo server"
+  },
   "dependencies": {
     "hexo": "^3.7.1",
     "hexo-abbrlink": "^2.0.5",
