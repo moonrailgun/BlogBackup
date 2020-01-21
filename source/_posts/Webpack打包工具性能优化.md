@@ -6,6 +6,7 @@ tags:
   - React
 abbrlink: 993cf839
 date: 2017-04-05 10:18:35
+updated: 2020-01-21 17:02:53
 ---
 
 ## 前言
@@ -34,3 +35,73 @@ module.exports = {
 ## devtool
 
 如果打包时启用了devtool, 请在生产环境下关闭或打到独立的sourcemap文件中。可以大大减少打包后的文件体积
+
+## DllPlugin
+
+dll是一种非常棒的优化手段。它直接以比较粗暴的方式将一些常用的，不修改的第三方库打包到独立的文件，使日常开发中不会去编译他。这种方式非常类似于[用CDN引用第三方库](https://www.jianshu.com/p/9248db0349fb)不过可以顺便对其进行一些特殊的处理。
+
+首先创建一个 `webpack.dll.config.js` 文件
+```javascript
+const path = require('path');
+const webpack = require('webpack');
+
+// 原则上是需要全量导入 且共用的模块
+const dllModules = ['react', 'react-dom', 'moment'];
+
+module.exports = {
+  entry: {
+    vendor: [...dllModules],
+  },
+  output: {
+    filename: 'dll_[name].js',
+    library: '[name]_[hash]',
+    path: path.resolve(__dirname, './dll'),
+  },
+  plugins: [
+    new webpack.DllPlugin({
+      path: path.resolve(__dirname, './dll/[name]-manifest.json'),
+      name: '[name]_[hash]',
+    }),
+    // 该命令使仅打包moment的zh-cn语言文件
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-cn/),
+  ],
+  mode: 'production',
+};
+```
+
+独立编译
+```bash
+$ webpack --config webpack.dll.config.js
+```
+
+生成一个 `manifest.json` 和 一个 `dll_vendor.js` 文件
+
+我们在我们正常的`webpack.config.js`文件中引用他
+```javascript
+const path = require('path');
+const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const dllConfig = require('./dll/vendor-manifest.json');
+
+module.exports = {
+  // ...
+  plugins: [
+    new webpack.DllReferencePlugin({
+      manifest: dllConfig,
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(BUILD_PATH, './dll/dll_vendor.js'),
+        to: '',
+      },
+    ]),
+  ],
+}
+```
+
+然后在HTML模板中手动增加该文件的引入即可
+```html
+<script src="/dll_vendor.js"></script>
+```
+
+*你也可以通过`dllConfig`的name属性来增加hash来实现更好的更新*
