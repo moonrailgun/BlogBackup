@@ -7,3 +7,4 @@ public/
 .deploy_git/
 .deploy*/
 package-lock.json
+seo/.baidu-token
