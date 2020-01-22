@@ -5,12 +5,13 @@ const fs = require('fs');
 const path = require('path');
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-const site = 'http://www.moonrailgun.com/'
+const site = 'http://www.moonrailgun.com/';
 const tokenCachePath = (path.resolve(__dirname, './.baidu-token'));
+const sitemapPath = path.resolve(__dirname, '../public/sitemap.xml');
 
 // 生成文件
 function generateUrls() {
-    const sites = convert.xml2js(fs.readFileSync(path.resolve(__dirname, '../public/sitemap.xml')), { compact: true });
+    const sites = convert.xml2js(fs.readFileSync(sitemapPath), { compact: true });
     const urlset = sites.urlset.url;
     const list = urlset.map(item => ({
         loc: item.loc._text,
@@ -22,7 +23,9 @@ function generateUrls() {
     return list.map(item => item.loc).join('\n');
 }
 
-console.log(`在 https://ziyuan.baidu.com/linksubmit/index?site=${site} 查看相关信息`)
+console.log(`在 https://ziyuan.baidu.com/linksubmit/index?site=${site} 查看相关信息`);
+console.log('请确保在提交前已生成sitemap文件:', sitemapPath);
+
 inquirer
     .prompt([
         {
