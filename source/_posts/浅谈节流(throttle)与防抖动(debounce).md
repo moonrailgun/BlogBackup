@@ -82,7 +82,7 @@ const t6t = setInterval(t6, 200); // 一秒后输出call func, 之后每秒输�
 对于lodash来说
 throttle的实现是通过debounce来实现的
 
-*https://github.com/lodash/lodash/blob/master/throttle.js*
+*[lodash 实现](https://github.com/lodash/lodash/blob/master/throttle.js)*
 ```javascript
 throttle(func, wait, options);
 
