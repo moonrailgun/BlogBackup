@@ -105,6 +105,9 @@ sudo apt-get install zsh
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 ```
 
+## 相互访问网络应用
+
+> WSL 2 做了架构的巨大变更，使用了虚拟化技术，并仍在努力改进网络支持。由于 WSL 2 现在运行在虚拟机中，因此你从 Windows 访问 Linux 网络应用程序需要使用该 VM 的 IP 地址，反之亦然，你需要 Windows 主机的 IP 地址才能从 Linux 中访问 Windows 网络应用程序。 WSL 2 的目标是尽可能使用 localhost 访问网络应用程序！可以在文档中找到有关如何执行此操作的完整详细信息和步骤。
 
 ## 参考资料
 
