@@ -61,6 +61,7 @@ runtime! plugins.vim
 - `Ctrl + u`: 上翻半页
 - `Ctrl + d`: 下翻半页
 - `Shift + *`: 在当前文件中搜索光标指定位置的文本
+- `Ctrl + r`: 在命令模式如插入寄存器中的文本。如`Ctrl+r` `"`
 
 ## 技巧
 
