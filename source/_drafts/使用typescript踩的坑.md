@@ -34,4 +34,4 @@ require('tsconfig-paths').register();
 
 因为他会直接把子项目的node require路径指向到父项目的`node_modules`(如果父项目的依赖包也有这个依赖的话)
 
-解决方案就是把`"*": ["node_modules/*"]`删去即刻，node可以使用自己的require路径搜索机制
+解决方案就是把`"*": ["node_modules/*"]`删去即可，node可以使用自己的require路径搜索机制

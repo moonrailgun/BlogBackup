@@ -15,6 +15,7 @@ git clone https://github.com/certbot/certbot.git
 
 ## 命令
 
+示例:
 ```bash
 ./certbot-auto certonly  -d *.moonrailgun.com --manual --preferred-challenges dns --server https://acme-v02.api.letsencrypt.org/directory
 ```
