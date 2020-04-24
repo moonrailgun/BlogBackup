@@ -63,6 +63,8 @@ runtime! plugins.vim
 - `Shift + *`: 在当前文件中搜索光标指定位置的文本
 - `Ctrl + r`: 在命令模式如插入寄存器中的文本。如`Ctrl+r` `"`
 
+- `cw`: 替换从光标所在位置后到一个单词结尾的字符
+
 ## 技巧
 
 - 智能大小写匹配
@@ -97,3 +99,6 @@ runtime! plugins.vim
     endif
   endif
   ```
+
+## 参考文章
+- [简明 VIM 练级攻略](https://coolshell.cn/articles/5426.html)
