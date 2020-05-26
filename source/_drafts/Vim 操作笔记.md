@@ -1,5 +1,5 @@
 ---
-title: Vim 环境搭建笔记
+title: Vim 操作笔记
 tags:
   - vim
 abbrlink: 49d9534d
