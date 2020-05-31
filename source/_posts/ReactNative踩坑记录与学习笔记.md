@@ -67,3 +67,14 @@ git update-index --assume-unchanged android/gradle.properties
 ```bash
 git update-index --no-assume-unchanged android/gradle.properties
 ```
+
+## 升级到新版本
+
+#### 使用自动迁移脚本
+```bash
+npx react-native upgrade [version]
+```
+
+#### 手动迁移
+
+查看迁移网站[https://react-native-community.github.io/upgrade-helper/](https://react-native-community.github.io/upgrade-helper/)
