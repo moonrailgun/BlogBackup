@@ -42,4 +42,8 @@ npm ERR! unauthorized Login first: -/user/org.couchdb.user:moonrailgun/-rev/unde
 
 - 在多包共存的项目中，明明两个对象看上去一模一样但是不相等
 
-需要检查一下这两个对象是否来自于不同的包。这个问题很难被发现，因为没有好的办法去检查一个对象的来源。需要人肉检查
+需要检查一下这两个对象是否来自于不同的包。这个问题很难被发现，因为没有好的办法去检查一个对象的来源。需要人肉检查。这是node这种树形结构的包管理所必然会遇到的一个问题(即你安装的A包与B包依赖的A包可能是两个同名但不同版本的依赖)。
+
+- 在Node中经常会需要编译原生模块的包，很多c的环境对于不熟悉的开发者来说搭建这些环境是很没有必要的一件事，特别是window环境下缺失很多编译环境，如python，vs
+
+在window下可以用管理员权限的终端安装`npm install --global windows-build-tools`，该模块会一键帮你安装大部分的编译环境。更多细节可以查看[Github](https://github.com/felixrieseberg/windows-build-tools)
