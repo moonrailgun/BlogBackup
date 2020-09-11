@@ -33,6 +33,10 @@ date: 2019-03-07 14:57:23
 
 ## 上传sourcemap的问题
 
+#### 上传文件路径
+
+上传文件路径应为打包目录的路径(如dist), 目录中应当有.map文件以供上传
+
 #### 上传文件返回413
 
-可能是sourcemap文件过大导致。Nginx默认上传文件大小1m, 使用`client_max_body_size 20m;`修改默认大小
+可能是sourcemap文件过大导致。如果是自部署的Sentry, Nginx默认上传文件大小1m, 使用`client_max_body_size 20m;`修改默认大小
