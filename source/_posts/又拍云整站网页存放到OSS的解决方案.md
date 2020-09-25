@@ -2,7 +2,8 @@
 title: 又拍云整站网页存放到OSS的解决方案
 tags:
   - upyun
-date: 2020-8-30 00:06:11
+abbrlink: c09e1fbc
+date: 2020-08-30 00:06:11
 ---
 
 ## 背景
