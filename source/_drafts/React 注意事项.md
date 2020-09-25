@@ -7,11 +7,20 @@ abbrlink: 80587f52
 date: 2020-09-09 16:17:17
 ---
 
-## Inline Style
+## Inline Style 内联样式
 
 内联样式有一些简写操作
 
-比如`<div style={{height: 10}}></div>` => `<div style="height: 10px"></div>`
+比如:
+```jsx
+<div style={{height: 10}}></div>
+```
+转化为
+```html
+<div style="height: 10px"></div>
+```
+
+------------------
 
 在jsx中会自动加上px单位。但需要注意的是, 并不是每种属性都会自动加上单位的。容易出问题的比如`lineHeight`
 
