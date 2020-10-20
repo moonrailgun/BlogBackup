@@ -1,9 +1,10 @@
 ---
-title: 从 Webpack 到 Snowpack, 编译速度提升十倍以上——TRPG Engine迁移小记
+title: '从 Webpack 到 Snowpack, 编译速度提升十倍以上——TRPG Engine迁移小记'
 tags:
   - Webpack
   - Snowpack
   - TRPG Engine
+abbrlink: 74598ef5
 date: 2020-10-17 19:41:35
 ---
 
@@ -20,25 +21,37 @@ date: 2020-10-17 19:41:35
 拿`Snowpack`官方的一张图来说:
 ![](/images/snowpack/1.png)
 
-`snowpack`的最小编译单位是文件，而`webpack`的最小编译单位为`chunk`, 而`chunk`还需要额外的计算
+`snowpack`的最小编译单位是文件，而`webpack`的最小编译单位为`chunk`, 而`chunk`还需要额外的计算, 不论是编译部分还是编译后的组装部分。snowpack的设计逻辑天生决定了她的速度。
 
 
 
-<!-- 优化后结果 -->
+**优化前(使用`webpack`):**
 
+全量编译:
+![](/images/snowpack/2.jpg)
 
+增量编译:
+![](/images/snowpack/3.jpg)
 
+**优化后(使用`snowpack`):**
 
+全量编译:
+![](/images/snowpack/4.jpg)
 
+增量编译:
 
+![](/images/snowpack/5.jpg)
 
+(看不到编译用时，但是体感在1s内. 而且该效果在电脑运行其他应用时更加显著)
 
-
+*以上测试是保证电脑在空闲时间，且保存与操作内容为同一文件*
+*该用时已经是平时操作的最快时间，为此我的MBR重启了一次强制清空了swap空间, 实际表现会更加显著*
 
 ## 遇到的坑与解决方案
 
 `TRPG Engine`算是非常经典的`Webpack`应用了, 使用了各种Loader。光通用配置就有250+行，各种优化配置，各种alias。等等长时间迭代积攒下来的配置，因此毫不意外的会遇到很多问题与坑。
 
+以下是我遇到的问题与解决方案:
 
 - 问题1:
   - 入口文件使用的是[HtmlwebpackPlugin](https://webpack.js.org/plugins/html-webpack-plugin/)编译的`handlebars`文件，而snowpack不支持`handlebars`文件作为入口
@@ -54,7 +67,7 @@ date: 2020-10-17 19:41:35
   - 解决方案: 手动写了一个自动解析的逻辑将其变成对应的[alias](https://www.snowpack.dev/#import-aliases)加到配置上
 - 问题5:
   - 在css中引入了字体文件，但是无法正常加载。因为snowpack无法正确识别url指定的资源并将其打包(webpack是使用`css-loader`来实现的)
-  - 解决方案: 
+  - 解决方案:
     ```
     scripts: {
       'mount:font': 'mount src/web/assets/fonts --to /main/fonts',
@@ -117,5 +130,12 @@ date: 2020-10-17 19:41:35
 - 问题11:
   - 部分依赖在其中部分代码使用了`require`作为引入方式, 而`snowpack`无法正确处理`require`
   - 解决方案: 检查后发现都已经修改。升级依赖到最新版即可
+- 问题12:
+  - 在使用less的import逻辑无法正常运行，这是由于`snowpack`的具体实现决定的。
+  - 暂时无法解决，使用`snowpack-plugin-replace`将其替换为css文件导入作为临时解决方案, 见讨论: [Github](https://github.com/snowpackjs/snowpack/discussions/1360)
+
+## 总结
+
+Snowpack虽然作为一个新兴的打包工具，目前尚不是非常完善, 功能也没有webpack这样丰富与齐全。但是它的新的打包设计对于有一定规模的前端应用还是非常优秀的。能极大提升开发效率。不失为一种好的解决方案。当然最后输出还是需要使用webpack对其进行一定的优化，毕竟原生的module支持目前浏览器的支持度还没有达到覆盖一个理想的地步[https://caniuse.com/es6-module](https://caniuse.com/es6-module)
 
 最后这是我最后提交的[pr](https://github.com/TRPGEngine/Client/pull/88/files)
