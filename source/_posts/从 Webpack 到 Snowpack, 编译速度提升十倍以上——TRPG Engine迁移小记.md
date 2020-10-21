@@ -19,6 +19,7 @@ date: 2020-10-17 19:41:35
 为什么会这么快？这是由于`Snowpack`本身的实现与设计哲学有关的。相比`Webpack`, `Snowpack`利用了现代浏览器的本身的`module`系统，跳过复杂的模型之间的组织编译过程而只关注于变更文件本身的编译，这样当然快了。
 
 拿`Snowpack`官方的一张图来说:
+
 ![](/images/snowpack/1.png)
 
 `snowpack`的最小编译单位是文件，而`webpack`的最小编译单位为`chunk`, 而`chunk`还需要额外的计算, 不论是编译部分还是编译后的组装部分。snowpack的设计逻辑天生决定了她的速度。
@@ -28,9 +29,11 @@ date: 2020-10-17 19:41:35
 **优化前(使用`webpack`):**
 
 全量编译:
+
 ![](/images/snowpack/2.jpg)
 
 增量编译:
+
 ![](/images/snowpack/3.jpg)
 
 全量请求用时:
@@ -40,6 +43,7 @@ date: 2020-10-17 19:41:35
 **优化后(使用`snowpack`):**
 
 全量编译:
+
 ![](/images/snowpack/4.jpg)
 
 增量编译:
@@ -67,7 +71,7 @@ date: 2020-10-17 19:41:35
 
 ## 遇到的坑与解决方案
 
-`TRPG Engine`算是非常经典的`Webpack`应用了, 使用了各种Loader。光通用配置就有250+行，各种优化配置，各种alias。等等长时间迭代积攒下来的配置，因此毫不意外的会遇到很多问题与坑。
+`TRPG Engine`算是非常经典的`Webpack`应用了, 使用了各种Loader。光通用配置就有250+行，各种优化配置，各种 alias。等等长时间迭代积攒下来的配置，因此毫不意外的会遇到很多问题与坑。
 
 以下是我遇到的问题与解决方案:
 
@@ -91,7 +95,7 @@ date: 2020-10-17 19:41:35
       'mount:font': 'mount src/web/assets/fonts --to /main/fonts',
     },
     ```
-- 问题6::
+- 问题6:
   - 对于一些特殊的写法我不想影响webpack的实现但是`snowpack`不支持这种写法。比如使用[`externals`](https://webpack.js.org/configuration/externals/)实现的配置引入, 比如[DefinePlugin](https://webpack.js.org/plugins/define-plugin/)实现的`process.env`(在snowpack中必须使用[`import.meta.env`](https://www.snowpack.dev/#environment-variables)), 再比如`require`的使用
   - 解决方案: 我实现了一个[snowpack-plugin-replace](https://github.com/moonrailgun/snowpack-plugin-replace)插件用于将这些东西全部替换成我想要的代码。具体使用如下:
     ```javascript
@@ -146,8 +150,9 @@ date: 2020-10-17 19:41:35
   - 现有的依赖需要`@babel/plugin-transform-runtime`提供的`helpers`作为全局依赖
   - 解决方案: 经检查是用到了`regenerator`功能，手动安装`regenerator-runtime`并在包前引入`import 'regenerator-runtime/runtime';`
 - 问题11:
-  - 部分依赖在其中部分代码使用了`require`作为引入方式, 而`snowpack`无法正确处理`require`
+  - 部分依赖在其中部分代码使用了`行内require`作为引入方式, 而`snowpack`无法正确处理`行内require`
   - 解决方案: 检查后发现都已经修改。升级依赖到最新版即可
+    - PS: 顶部require snowpack使用rollup的commonjs插件来解决，具体看代码:[https://github.com/snowpackjs/snowpack/blob/d90a1fb8a080bfe32e7283d87063381cd97f48bb/esinstall/src/index.ts#L383-L387](https://github.com/snowpackjs/snowpack/blob/d90a1fb8a080bfe32e7283d87063381cd97f48bb/esinstall/src/index.ts#L383-L387)
 - 问题12:
   - 在使用less的import逻辑无法正常运行，这是由于`snowpack`的具体实现决定的。
   - 暂时无法解决，使用`snowpack-plugin-replace`将其替换为css文件导入作为临时解决方案, 见讨论: [Github](https://github.com/snowpackjs/snowpack/discussions/1360)
