@@ -155,7 +155,7 @@ date: 2020-10-17 19:41:35
     - PS: 顶部require snowpack使用rollup的commonjs插件来解决，具体看代码:[https://github.com/snowpackjs/snowpack/blob/d90a1fb8a080bfe32e7283d87063381cd97f48bb/esinstall/src/index.ts#L383-L387](https://github.com/snowpackjs/snowpack/blob/d90a1fb8a080bfe32e7283d87063381cd97f48bb/esinstall/src/index.ts#L383-L387)
 - 问题12:
   - 在使用less的import逻辑无法正常运行，这是由于`snowpack`的具体实现决定的。
-  - 暂时无法解决，使用`snowpack-plugin-replace`将其替换为css文件导入作为临时解决方案, 见讨论: [Github](https://github.com/snowpackjs/snowpack/discussions/1360)
+  - ~~暂时无法解决，使用`snowpack-plugin-replace`将其替换为css文件导入作为临时解决方案, 见讨论: [Github](https://github.com/snowpackjs/snowpack/discussions/1360)~~ 使用[`@snowpack/plugin-run-script`](https://www.npmjs.com/package/@snowpack/plugin-run-script)插件将其手动编译后放在公共文件中。可以参考这个[commit](https://github.com/TRPGEngine/Client/commit/8c39dd9fbcf7bbad4bee93c7760d0b2b4415cbdf)
 
 ## 总结
 
