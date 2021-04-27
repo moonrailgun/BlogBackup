@@ -10,6 +10,24 @@ date: 2021-03-01 15:50:59
 
 本文主要是阐述与总结现代浏览器的跨域问题
 
+## 同源策略
+
+**同源策略**是一个重要的安全策略，它用于限制一个origin的文档或者它加载的脚本如何能与另一个源的资源进行交互。它能帮助阻隔恶意文档，减少可能被攻击的媒介。
+
+#### 定义
+
+如果两个 URL 的 protocol、port (en-US) (如果有指定的话)和 host 都相同的话，则这两个 URL 是同源。这个方案也被称为“协议/主机/端口元组”，或者直接是 “元组”。（“元组” 是指一组项目构成的整体，双重/三重/四重/五重/等的通用形式）。
+
+下表给出了与 URL http://store.company.com/dir/page.html 的源进行对比的示例:
+
+| URL | 结果 | 原因 |
+| http://store.company.com/dir2/other.html | 同源 | 只有路径不同 |
+| http://store.company.com/dir/inner/another.html | 同源 | 只有路径不同 |
+| https://store.company.com/secure.html	 | 失败 | 协议不同 |
+| http://store.company.com:81/dir/etc.html	 | 失败 | 端口不同 (http:// 默认端口是80) |
+| http://news.company.com/dir/other.html | 失败 | 主机不同 |
+
+
 ## 开始一个跨域请求
 
 你可以使用`XMLHttpRequest`或`Fetch`发起一个跨域请求
@@ -103,6 +121,7 @@ Access-Control-Allow-Credentials: true
 
 ## 参考文章
 
+- [Same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)
 - [跨源资源共享（CORS）](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 - [SameSite cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite)
 - [Fetch](https://fetch.spec.whatwg.org/)
