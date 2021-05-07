@@ -21,6 +21,7 @@ date: 2021-03-01 15:50:59
 下表给出了与 URL http://store.company.com/dir/page.html 的源进行对比的示例:
 
 | URL | 结果 | 原因 |
+| ---- | ---- | ---- |
 | http://store.company.com/dir2/other.html | 同源 | 只有路径不同 |
 | http://store.company.com/dir/inner/another.html | 同源 | 只有路径不同 |
 | https://store.company.com/secure.html	 | 失败 | 协议不同 |
