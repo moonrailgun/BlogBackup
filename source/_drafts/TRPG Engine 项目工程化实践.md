@@ -10,10 +10,22 @@ date: 2021-5-21 21:33:57
 
 一个人维护一个项目很久了, 差不多是时候总结一些经验做一些些输出了。因此来汇总一下这些年我对我的开源项目`TRPG Engine`做的工程化实践。
 
+首先，我们要明确一点，即为什么要做工程化:
+
+- 提升开发效率
+- 降低开发成本
+- 提升产品质量
+- 降低企业成本
+
+所有的代码, 所有的技术都依托于业务, 所有的手段都是为了最终目的而服务的。因此我们工程化最终目的就是提高产出。
+
 ## Git workflow
+
+![](/images/git/1.jpeg)
 
 参考文章:
 
+- [Understanding the GitHub flow](https://guides.github.com/introduction/flow/)
 - [https://nvie.com/posts/a-successful-git-branching-model/](https://nvie.com/posts/a-successful-git-branching-model/)
 - [https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
 
@@ -92,11 +104,11 @@ chore：构建过程或辅助工具的变动
 
 对于比较难以测试的前端组件, `TRPG Engine`的做法是打快照，通过快照的变更告知开发者是否有一个 **预期/非预期** 的变更出现
 
-单元测试的存在也应当继承到CI中，以确保每次执行都可用。
+单元测试的存在也应当集成到CI中，以确保每次执行都可用。
 
 ## Bundler
 
-在现代前端编程中, 打包编译是前端不得不重视的一环
+在现代前端编程中, 打包编译是前端不得不重视的一环。
 
 从less scss等css拓展语言, 到ts, coffee的js拓展。
 
@@ -113,13 +125,54 @@ chore：构建过程或辅助工具的变动
 
 ## CI/CD
 
-## Analytics
+Continuous Integration and Continuous Delivery
+持续集成与持续交付
+
+市面上有很多免费的CI系统, 比如 `travis`, `appveyor`, `circleci`, `github action`等等, 再比如gitlab自带的ci系统。
+
+总的来说都大同小异, 我们使用CI系统无非是关注单元测试有没有跑通，如何可以的话顺便输出一份coverage覆盖率报告。如果再可以的话可以把代码编译了以后输出编译报告。来方便衡量每一次提交的代码质量。
+
+一般来说CI/CD都放在一起来讲，因为只是最终的输出不一样罢了。
+
+CD可以做一些每次提交都编译文件, 或者往特殊分支提交就部署页面的功能。(比如每次向`docs`提交代码都编译文档并部署到远程服务器上)
+
+## Analytics and Monitor
+
+一些现成的分析服务:
+- `Google Analytics`
+- `Datadog`
+- `Posthog`
+- `Sentry Tracking`
+- `Grafana`
+- `uptimerobot`
+
+这些工具是帮助你的项目在上线后能分析或监控的方式。通过这些工具可以收集用户的行为，检测服务可用性等。
+
+监控可以帮助你的服务稳定可靠，发生宕机的情况能够第一时间发现，减少用户损失。没有监控的服务就是没有地图和罗盘的轮船 —— 什么时候沉默？天知道!
+
+而用户行为收集是下一步迭代的重要依据，如果是用户比较少用的功能则可以考虑减慢开发进度。
+
+对于监控，我推荐`posthog`，这是一款新兴的分析系统。推荐的理由很简单，因为他是开源的，我们可以自己部署，然后把他的数据进行二次加工与处理。
 
 ## Performance
 
+性能是提升用户体验的重要一环，即常规感知中的“卡不卡”。
+
+我们有很多方式去提升性能，比如采集用户的首屏渲染时间，比如手动打开devtool去对具体某个操作进行堆栈分析，再比如用Lighthouse跑个分 —— google的工具都非常棒。
+
+参考文档:
+- [Performance](https://developer.mozilla.org/zh-CN/docs/Web/API/Performance)
+
 ## Logging
 
+- local file
+- `Loggly`
+- `ELK`
+- 阿里云日志腾讯云日志...
+
 ## Error Report
+
+- `Sentry`
 
 ## Develop for Distributed
 
