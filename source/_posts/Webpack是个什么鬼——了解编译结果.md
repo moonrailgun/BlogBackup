@@ -4,7 +4,8 @@ tags:
   - webpack
   - esmodule
   - commonjs
-date: 2021-06-03 10:33:08
+abbrlink: a409424d
+date: 2021-06-05 20:46:30
 ---
 
 ## 简述
