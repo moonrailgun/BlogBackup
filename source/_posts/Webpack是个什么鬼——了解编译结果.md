@@ -459,6 +459,73 @@ var __webpack_modules__ = ({
 });
 ```
 
+一个主要细节在于`esmodule`使用了`__webpack_require__.d`来确保其代码的只读性，而commonjs没有:
+
+#### esmodule和commonjs的模块导出可访问性区别
+
+`CommonJS` 模块输出的是一个值的拷贝, `ES6` 模块输出的是值的引用
+
+举个例子
+
+**commonjs**
+```javascript
+var a = 1;
+setTimeout(() => {
+  a = 2;
+}, 0)
+
+exports.a = a;
+```
+
+生成代码:
+```javascript
+((module) => {
+  var a = 1;
+  setTimeout(() => {
+    a = 2;
+  }, 0)
+
+  module.exports.a = a;
+})
+```
+
+**esmodule**:
+```javascript
+var a = 1;
+setTimeout(() => {
+  a = 2;
+}, 0)
+export { a }
+
+```
+
+输出代码:
+
+```javascript
+((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+  "use strict";
+  __webpack_require__.r(__webpack_exports__);
+  /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+  /* harmony export */   "a": () => (/* binding */ a)
+  /* harmony export */ });
+  var a = 1;
+  setTimeout(() => {
+      a = 2;
+  }, 0)
+})
+```
+
+可以看到区别:
+- commonjs 输出的a: 1 -> 1
+- esmodule 输出的a: 1 -> 2
+
+因为`commonjs`内部实现是赋值，程序导出以后原来的`a`和导出的`a`的关系就没有了
+
+而`esmodule`输出的一个对象，内部的`getter`会每次去拿最新的`a`的值
+
+-----------------
+
+
 那么到此我们的中间代码就看完了，顺便还介绍了一下`webpack`的导出结果。完整的中间代码列表可以看[这个文件](https://github.com/webpack/webpack/blob/HEAD/lib/RuntimeGlobals.js)
 
 
