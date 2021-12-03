@@ -4,6 +4,7 @@ tags:
   - k3s
   - k8s
   - 学习笔记
+abbrlink: e7e551d1
 date: 2021-12-01 20:47:23
 ---
 
