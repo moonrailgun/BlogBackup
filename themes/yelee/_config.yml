@@ -289,16 +289,16 @@ progressBar:
   color: blue
 
 CDN:
-  jquery: https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js
-  require: https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js
-  fontawesome: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css
-  fancybox_js: https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js
-  fancybox_css: https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css
-  animate_css: https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css
-  jquery_ui_js: https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js
-  jquery_ui_css: https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/css/jquery-ui.min.css
-  pace_js: https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js
-  pace_css_theme: https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes
-  clipboard: https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js
-  mathjax: https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js
-  scrollreveal: https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/3.1.4/scrollreveal.min.js
+  jquery: https://lib.baomitu.com/jquery/2.2.4/jquery.min.js
+  require: https://lib.baomitu.com/require.js/2.2.0/require.min.js
+  fontawesome: https://lib.baomitu.com/font-awesome/4.6.3/css/font-awesome.min.css
+  fancybox_js: https://lib.baomitu.com/fancybox/2.1.5/jquery.fancybox.min.js
+  fancybox_css: https://lib.baomitu.com/fancybox/2.1.5/jquery.fancybox.min.css
+  animate_css: https://lib.baomitu.com/animate.css/3.5.1/animate.min.css
+  jquery_ui_js: https://lib.baomitu.com/jqueryui/1.10.4/jquery-ui.min.js
+  jquery_ui_css: https://lib.baomitu.com/jqueryui/1.10.4/css/jquery-ui.min.css
+  pace_js: https://lib.baomitu.com/pace/1.0.2/pace.min.js
+  pace_css_theme: https://lib.baomitu.com/pace/1.0.2/themes
+  clipboard: https://lib.baomitu.com/clipboard.js/1.5.10/clipboard.min.js
+  mathjax: https://lib.baomitu.com/mathjax/2.7.0/MathJax.js
+  scrollreveal: https://lib.baomitu.com/scrollReveal.js/3.1.4/scrollreveal.min.js
