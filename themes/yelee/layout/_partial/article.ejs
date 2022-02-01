@@ -45,7 +45,7 @@
       <%- partial('post/tag') %>
       <% if (index && (post.description || post.excerpt)){ %>
         <p class="article-more-link">
-          <a <% if (!theme.excerpt_link){ %>class="hidden"<% } %> href="<%- url_for(post.path) %>#more"><%= theme.excerpt_link %> >></a>
+          <a href="<%- url_for(post.path) %>#more"><%= __('index.more') %> >></a>
         </p>
       <% } %>
       <div class="clearfix"></div>
@@ -56,11 +56,10 @@
     <%- partial('post/nav') %>
   <% } %>
 </article>
-<% if (!index && post.toc != false && !is_page()){ %>
-    <%- partial('_partial/toc') %>
-<% } %>
-<% if (!index && theme.share){ %>
-<%- partial('post/share') %>
+<%- partial('_partial/toc') %>
+
+<% if (!index && theme.share.on && (post.share != false || post.share)){ %>
+    <%- partial('post/share') %>
 <% } %>
 
 <% if (!index && post.comments){ %>
@@ -85,35 +84,10 @@
 
 <%- partial('_partial/post-nav-button') %>
 
-<% if (post.fancybox != false){ %>
-    <% if (theme.fancybox){ %>
-        <%- css('fancybox/jquery.fancybox') %>
-        <script>
-            var yiliaConfig = {
-            fancybox: <%=theme.fancybox%>,
-            mathjax: <%=theme.mathjax%>,
-            animate: <%=theme.animate%>,
-            isHome: <%=is_home()%>,
-            isPost: <%=is_post()%>,
-            isArchive: <%=is_archive()%>,
-            isTag: <%=is_tag()%>,
-            isCategory: <%=is_category()%>,
-            open_in_new: <%=theme.open_in_new%>
-            }
-        </script>
-    <% } %>    
-<% } else { %>
-        <script>
-            var yiliaConfig = {
-            fancybox: false,
-            mathjax: <%=theme.mathjax%>,
-            animate: <%=theme.animate%>,
-            isHome: <%=is_home()%>,
-            isPost: <%=is_post()%>,
-            isArchive: <%=is_archive()%>,
-            isTag: <%=is_tag()%>,
-            isCategory: <%=is_category()%>,
-            open_in_new: <%=theme.open_in_new%>
-            }
-        </script>
+<% if (!index) { %>
+    <script>
+        <% if (post.fancybox === false){ %>
+            yiliaConfig.fancybox = false;
+        <% } %>
+    </script>
 <% } %>

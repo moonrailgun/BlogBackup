@@ -1,23 +1,24 @@
 <div class="overlay"></div>
 <div class="intrude-less">
     <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            <% if (theme.animate){ %>
-            <img lazy-src="<%=theme.avatar%>" class="js-avatar">
-            <%}else{%>
-            <img src="<%=theme.avatar%>" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
-            <%}%>
+        <a href="<%= config.root %>" class="profilepic">
+            <img src="<%- theme.root_url %><%=theme.avatar%>" class="animated zoomIn">
         </a>
-
         <hgroup>
-          <h1 class="header-author"><a href="/"><%=theme.author%></a></h1>
+          <h1 class="header-author"><a href="<%= config.root %>"><%=theme.author%></a></h1>
         </hgroup>
 
         <% if (theme.subtitle){ %>
         <p class="header-subtitle"><%=theme.subtitle%></p>
         <%}%>
-        <% if (theme.search_box){ %>
-        <form><input type="text" class="search" placeholder=" Search..."></form>
+
+        <% if (theme.search.on){ %>
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="<%= theme.search.onload %>" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         <%}%>
 
 
@@ -45,18 +46,18 @@
                         </div>
                         <%}%>
                     </div>
-
+                    
                 </div>
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
+                        <li><%= __('index.menu') %></li>
+                        <li><%= __('index.tags') %></li>
                         <%if(theme.friends && theme.friends.length != 0){%>
-                        <li>友情链接</li>
+                        <li><%= __('index.friends') %></li>
                         <%}%>
                         <%if(theme.aboutme){%>
-                        <li>关于我</li>
+                        <li><%= __('index.about') %></li>
                         <%}%>
                     </ul>
                 </div>
@@ -69,32 +70,32 @@
                     <nav class="header-menu">
                         <ul>
                         <% for (var i in theme.menu){ %>
-                            <li><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
+                            <li><a href="<%- theme.root_url %><%- url_for(theme.menu[i]) %>"><%= i %></a></li>
                         <%}%>
                         </ul>
                     </nav>
                     <nav class="header-nav">
                         <ul class="social">
                             <% for (var i in theme.subnav){ %>
-                                <li id="<%= i %>"><a class="<%= i %>" target="_blank" href="<%- url_for(theme.subnav[i]) %>" title="<%= i %>"></a></li>
+                                <a class="fa <%= i %>" href="<%- url_for(theme.subnav[i]) %>" title="<%= i %>"></a>
                             <%}%>
                         </ul>
                     </nav>
                 </section>
-
+                
                 <%if(theme.tagcloud){%>
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <%- tagcloud() %>
+                        <%- list_tags({show_count: false}) %>
                     </div>
                 </section>
                 <%}%>
-
+                
                 <%if(theme.friends && theme.friends.length != 0){%>
                 <section class="switch-part switch-part3">
                     <div id="js-friends">
                     <% for (var i in theme.friends){ %>
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="<%- url_for(theme.friends[i]) %>"><%= i %></a>
+                      <a class="main-nav-link switch-friends-link" href="<%- url_for(theme.friends[i]) %>"><%= i %></a>
                     <% } %>
                     </div>
                 </section>
@@ -111,5 +112,5 @@
                 <%}%>
             </div>
         </div>
-    </header>
+    </header>                
 </div>

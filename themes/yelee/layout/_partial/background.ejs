@@ -9,34 +9,9 @@
             }
             else {
                 var backgroundnum = <%= theme.background_image %>;
-                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                var backgroundimg = "url(<%- theme.root_url %>/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
                 $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
             }
         })
     </script>
-<% } else { %>
-    <style>
-        body {
-          background: lightgray;
-        }
-        #container .left-col {
-          background: white;
-        }
-        .article-inner {
-          background: white;
-          margin-bottom: 1em;
-        }
-        .post-nav-button {
-          background: #ececec;
-        }
-        #header .header-nav .social #GitHub {
-          background-color: #bfd3ec;
-        }
-        #post-nav-button a {
-          background: rgba(215, 216, 215, .2);
-        }
-        .post-list {
-          background: white;
-        }
-    </style>
 <% } %>

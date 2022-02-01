@@ -5,11 +5,11 @@
       </div>
     <div class="intrude-less">
         <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                <img src="<%=theme.avatar%>" class="js-avatar">
+            <a href="<%= config.root %>" class="profilepic">
+                <img src="<%- theme.root_url %><%=theme.avatar%>" class="animated zoomIn">
             </a>
             <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页"><%=theme.author%></a></h1>
+              <h1 class="header-author"><a href="<%= config.root %>" title="回到主页"><%=theme.author%></a></h1>
             </hgroup>
             <% if (theme.subtitle){ %>
             <p class="header-subtitle"><%=theme.subtitle%></p>
@@ -25,10 +25,11 @@
             <nav class="header-nav">
                         <ul class="social">
                             <% for (var i in theme.subnav){ %>
-                                <li id="<%= i %>"><a class="<%= i %>" target="_blank" href="<%- url_for(theme.subnav[i]) %>" title="<%= i %>"></a></li>
+                                <a class="fa <%= i %>" target="_blank" href="<%- url_for(theme.subnav[i]) %>" title="<%= i %>"></a>
                             <%}%>
                         </ul>
             </nav>
-        </header>
+        </header>                
     </div>
+    <link class="menu-list" tags="<%= __('index.tags') %>" friends="<%= __('index.friends') %>" about="<%= __('index.about') %>"/>
 </nav>
