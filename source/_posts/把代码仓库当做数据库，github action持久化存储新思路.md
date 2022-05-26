@@ -5,7 +5,8 @@ tags:
   - Github
   - Github Action
   - 持久化存储
-date: 2022-5-26 00:04:48
+abbrlink: e678c77b
+date: 2022-05-26 00:04:48
 ---
 
 ## 背景
@@ -82,6 +83,8 @@ jobs:
 ```
 
 这个action表示，每执行一次，我们的`actions/filedb`中的date文件就会更新成最新的.当然也可以加上一些定时任务触发器让他自动执行。当然建议不要滥用哦，可以使用低频一些
+
+在Github Marketplace查看: [https://github.com/marketplace/actions/branch-filestorage-action](https://github.com/marketplace/actions/branch-filestorage-action)
 
 开源地址: [moonrailgun/branch-filestorage-action](https://github.com/moonrailgun/branch-filestorage-action)
 
