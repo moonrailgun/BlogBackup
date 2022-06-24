@@ -193,7 +193,9 @@ export const GarfishInstance = createContext();
 
 ### 插件系统
 
-`Garfish` 自己实现了一套插件协议，我们以`Garfish`最核心的插件 `@garfish/router` 为学习例子，该代码的位置在: `garfish/packages/router/src/index.ts`
+`Garfish` 自己实现了一套插件协议，其本质是pubsub模型的变种(部分生命周期的emit阶段增加了异步操作的等待逻辑)。
+
+我们以`Garfish`最核心的插件 `@garfish/router` 为学习例子，该代码的位置在: `garfish/packages/router/src/index.ts`
 
 ```ts
 export function GarfishRouter(_args?: Options) {
