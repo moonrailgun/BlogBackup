@@ -576,7 +576,7 @@ this.hooks.lifecycle.bootstrap.emit(this.options);
 其中主要需要关心的`active`操作(即子应用挂载逻辑)做了以下事情:
 - 调用 `Garfish.loadApp` 将子应用挂载到子应用挂载节点上(Promise 同步加载)
 - 在 `Garfish.apps` 记录该app
-- 注册到 unmounts 记录
+- 注册到 unmounts 记录销毁逻辑
 
 ```ts
 /**
@@ -623,12 +623,16 @@ export const registerRouter = (Apps: Array<interfaces.AppInfo>) => {
 
 `registerRouter`没有什么特殊的，仅仅管理路由状态
 
+接下来看一下`listen()`函数做的事情:
+
 ```ts
 export const listen = () => {
   normalAgent();
   initRedirect();
 };
 ```
+
+`initRedirect`我们之前看过了，现在我们主要看`normalAgent`的实现
 
 *garfish/packages/router/src/agentRouter.ts*
 ```ts
@@ -729,4 +733,160 @@ export const normalAgent = () => {
 };
 ```
 
-<!-- TODO -->
+`normalAgent` 做了以下事情:
+- 通过`rewrite`函数重写`history.pushState`和`history.pushState`
+  - `rewrite`函数则是在调用以上方法的前后增加了一些当前情况的快照，如果`url`/`state`发生变化则触发`__GARFISH_BEFORE_ROUTER_EVENT__`事件
+- 对`popstate`事件增加监听
+- 调用 `addRouterListener` 增加路由监听回调。监听方法基于浏览器内置的事件系统，事件名: `__GARFISH_BEFORE_ROUTER_EVENT__`
+
+综上, `router` 通过监听`history`的方法来执行副作用调用`linkTo`函数，而`linkTo`函数则通过一系列操作将匹配的路由调用`active`方法，将不匹配的路由调用`deactive`方法以实现类型切换
+
+这时候我们再回过头来看一下`active`函数的实现
+
+```ts
+async function active(
+  appInfo: interfaces.AppInfo,
+  rootPath: string = '/',
+) {
+  routerLog(`${appInfo.name} active`, {
+    appInfo,
+    rootPath,
+    listening: RouterConfig.listening,
+  });
+
+  // In the listening state, trigger the rendering of the application
+  if (!RouterConfig.listening) return;
+
+  const { name, cache = true, active } = appInfo;
+  if (active) return active(appInfo, rootPath);
+  appInfo.rootPath = rootPath;
+
+  const currentApp = (activeApp = createKey());
+  const app = await Garfish.loadApp(appInfo.name, {
+    basename: rootPath,
+    entry: appInfo.entry,
+    cache: true,
+    domGetter: appInfo.domGetter,
+  });
+
+  if (app) {
+    app.appInfo.basename = rootPath;
+
+    const call = async (app: interfaces.App, isRender: boolean) => {
+      if (!app) return;
+      const isDes = cache && app.mounted;
+      if (isRender) {
+        return await app[isDes ? 'show' : 'mount']();
+      } else {
+        return app[isDes ? 'hide' : 'unmount']();
+      }
+    };
+
+    Garfish.apps[name] = app;
+    unmounts[name] = () => {
+      // Destroy the application during rendering and discard the application instance
+      if (app.mounting) {
+        delete Garfish.cacheApps[name];
+      }
+      call(app, false);
+    };
+
+    if (currentApp === activeApp) {
+      await call(app, true);
+    }
+  }
+}
+```
+
+其核心代码则是调用了`Garfish.loadApp`方法来执行加载操作。
+
+### 应用加载
+
+接下来我们看一下`loadApp`函数
+
+garfish/packages/core/src/garfish.ts
+```ts
+loadApp(
+  appName: string,
+  options?: Partial<Omit<interfaces.AppInfo, 'name'>>,
+): Promise<interfaces.App | null> {
+  assert(appName, 'Miss appName.');
+
+  let appInfo = generateAppOptions(appName, this, options);
+
+  const asyncLoadProcess = async () => {
+    // Return not undefined type data directly to end loading
+    const stop = await this.hooks.lifecycle.beforeLoad.emit(appInfo);
+
+    if (stop === false) {
+      warn(`Load ${appName} application is terminated by beforeLoad.`);
+      return null;
+    }
+
+    //merge configs again after beforeLoad for the reason of app may be re-registered during beforeLoad resulting in an incorrect information
+    appInfo = generateAppOptions(appName, this, options);
+
+    assert(
+      appInfo.entry,
+      `Can't load unexpected child app "${appName}", ` +
+        'Please provide the entry parameters or registered in advance of the app.',
+    );
+
+    // Existing cache caching logic
+    let appInstance: interfaces.App | null = null;
+    const cacheApp = this.cacheApps[appName];
+
+    if (appInfo.cache && cacheApp) {
+      appInstance = cacheApp;
+    } else {
+      try {
+        const [manager, resources, isHtmlMode] = await processAppResources(
+          this.loader,
+          appInfo,
+        );
+
+        appInstance = new App(
+          this,
+          appInfo,
+          manager,
+          resources,
+          isHtmlMode,
+          appInfo.customLoader,
+        );
+
+        // The registration hook will automatically remove the duplication
+        for (const key in this.plugins) {
+          appInstance.hooks.usePlugin(this.plugins[key]);
+        }
+        if (appInfo.cache) {
+          this.cacheApps[appName] = appInstance;
+        }
+      } catch (e) {
+        __DEV__ && warn(e);
+        this.hooks.lifecycle.errorLoadApp.emit(e, appInfo);
+      }
+    }
+
+    await this.hooks.lifecycle.afterLoad.emit(appInfo, appInstance);
+    return appInstance;
+  };
+
+  if (!this.loading[appName]) {
+    this.loading[appName] = asyncLoadProcess().finally(() => {
+      delete this.loading[appName];
+    });
+  }
+  return this.loading[appName];
+}
+```
+
+该函数做了以下操作:
+
+- 首先执行`asyncLoadProcess`来异步加载app，如果app正在加载则返回该Promise
+- *使用`generateAppOptions`计算全局+本地的配置，并通过黑名单过滤掉一部分的无用参数(filterAppConfigKeys)*
+- 如果当前app已加载则直接返回缓存后的内容
+- 如果是第一次加载，则执行 `processAppResources` 进行请求, 请求的地址为 `entry` 指定的地址。
+- 当请求完毕后创建`new App`对象，将其放到内存中
+- *应用插件/记录缓存/发布生命周期事件等*
+
+<!-- TODO: processAppResources 和 App -->
