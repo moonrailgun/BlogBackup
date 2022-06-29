@@ -1,10 +1,10 @@
 ---
-title: Garfish 源码解析
+title: Garfish 源码解析 —— 一个微应用是如何被挂载的
 tags:
   - Garfish
   - 源码解析
   - 学习笔记
-date: 2022-06-24 10:39:39
+date: 2022-06-29 11:50:27
 ---
 
 ## 背景
@@ -889,4 +889,347 @@ loadApp(
 - 当请求完毕后创建`new App`对象，将其放到内存中
 - *应用插件/记录缓存/发布生命周期事件等*
 
-<!-- TODO: processAppResources 和 App -->
+
+接下来我们看核心函数, `processAppResources`的实现
+
+```ts
+export async function processAppResources(loader: Loader, appInfo: AppInfo) {
+  let isHtmlMode: Boolean = false,
+    fakeEntryManager;
+  const resources: any = { js: [], link: [], modules: [] }; // Default resources
+  assert(appInfo.entry, `[${appInfo.name}] Entry is not specified.`);
+  const { resourceManager: entryManager } = await loader.load({
+    scope: appInfo.name,
+    url: transformUrl(location.href, appInfo.entry),
+  });
+
+  // Html entry
+  if (entryManager instanceof TemplateManager) {
+    isHtmlMode = true;
+    const [js, link, modules] = await fetchStaticResources(
+      appInfo.name,
+      loader,
+      entryManager,
+    );
+    resources.js = js;
+    resources.link = link;
+    resources.modules = modules;
+  } else if (entryManager instanceof JavaScriptManager) {
+    // Js entry
+    isHtmlMode = false;
+    const mockTemplateCode = `<script src="${entryManager.url}"></script>`;
+    fakeEntryManager = new TemplateManager(mockTemplateCode, entryManager.url);
+    entryManager.setDep(fakeEntryManager.findAllJsNodes()[0]);
+    resources.js = [entryManager];
+  } else {
+    error(`Entrance wrong type of resource of "${appInfo.name}".`);
+  }
+
+  return [fakeEntryManager || entryManager, resources, isHtmlMode];
+}
+```
+
+首先根据`appInfo.entry`调用`loader.load`函数，生成一个`entryManager`。如果entry指向的是html地址则获取静态数据后拿取`js,link,modules`，如果entry指向的是一个js地址则伪造一个仅包含这段js的js资源。最后的返回值是一个 `[resourceManager, resources, isHtmlMode]` 的元组。
+
+其中`resourceManager`的大概结构如下:
+![resourceManager](/images/garfish/2.png)
+
+`loader.load`的本质上就是发请求获取数据然后把请求到的纯文本转化成结构化，如果是html则对html声明的资源进行进一步的请求获取。这边就不再赘述。
+
+我们回到`loadApp`函数的实现。
+
+之后，代码根据`processAppResources`获取到的`[resourceManager, resources, isHtmlMode]`信息来创建一个`new App`;
+```ts
+appInstance = new App(
+  this,
+  appInfo,
+  manager,
+  resources,
+  isHtmlMode,
+  appInfo.customLoader,
+);
+```
+
+![appInstance](/images/garfish/3.png)
+
+`new App`的过程中没有任何逻辑，仅仅是一些变量的定义。值得注意的是在此过程中会对插件系统做一些初始化设定
+
+garfish/packages/core/src/module/app.ts
+```ts
+export class App {
+  constructor(
+    context: Garfish,
+    appInfo: AppInfo,
+    entryManager: TemplateManager,
+    resources: interfaces.ResourceModules,
+    isHtmlMode: boolean,
+    customLoader?: CustomerLoader,
+  ) {
+    // ...
+
+    // Register hooks
+    this.hooks = appLifecycle();
+    this.hooks.usePlugin({
+      ...appInfo,
+      name: `${appInfo.name}-lifecycle`,
+    });
+
+    // ...
+  }
+}
+```
+
+到这一步为止，我们还在做一些准备工作:
+- 从远程获取资源
+- 将纯文本解析成结构化对象和AST
+- 进一步获取js/css的实际代码
+
+接下来我们需要一个调用方能够帮助我们将获取到的资源**执行并挂载**到dom上。
+
+这时候我们就需要回到我们的`router`插件。还记得我们的`GarfishRouter.bootstrap.active`里的代码么?
+
+garfish/packages/router/src/index.ts
+```ts
+export function GarfishRouter(_args?: Options) {
+  return function (Garfish: interfaces.Garfish): interfaces.Plugin {
+    return {
+      // ...
+
+      bootstrap(options: interfaces.Options) {
+        // ...
+
+        async function active(
+          appInfo: interfaces.AppInfo,
+          rootPath: string = '/',
+        ) {
+          // ...
+          const app = await Garfish.loadApp(appInfo.name, {
+            basename: rootPath,
+            entry: appInfo.entry,
+            cache: true,
+            domGetter: appInfo.domGetter,
+          });
+
+          if (app) {
+            app.appInfo.basename = rootPath;
+
+            const call = async (app: interfaces.App, isRender: boolean) => {
+              if (!app) return;
+              const isDes = cache && app.mounted;
+              if (isRender) {
+                return await app[isDes ? 'show' : 'mount']();
+              } else {
+                return app[isDes ? 'hide' : 'unmount']();
+              }
+            };
+
+            Garfish.apps[name] = app;
+            unmounts[name] = () => {
+              // Destroy the application during rendering and discard the application instance
+              if (app.mounting) {
+                delete Garfish.cacheApps[name];
+              }
+              call(app, false);
+            };
+
+            if (currentApp === activeApp) {
+              await call(app, true);
+            }
+          }
+        }
+
+        // ...
+    };
+  };
+}
+```
+
+当我们第一次执行到`call`函数时，会执行`app.mount()`函数来实现应用的挂载。
+
+我们看下`app.mount()`的实现:
+
+garfish/packages/core/src/module/app.ts
+```ts
+export class App {
+  async mount() {
+    if (!this.canMount()) return false;
+    this.hooks.lifecycle.beforeMount.emit(this.appInfo, this, false);
+
+    this.active = true;
+    this.mounting = true;
+    try {
+      this.context.activeApps.push(this);
+      // add container and compile js with cjs
+      const { asyncScripts } = await this.compileAndRenderContainer();
+      if (!this.stopMountAndClearEffect()) return false;
+
+      // Good provider is set at compile time
+      const provider = await this.getProvider();
+      // Existing asynchronous functions need to decide whether the application has been unloaded
+      if (!this.stopMountAndClearEffect()) return false;
+
+      this.callRender(provider, true);
+      this.display = true;
+      this.mounted = true;
+      this.hooks.lifecycle.afterMount.emit(this.appInfo, this, false);
+
+      await asyncScripts;
+      if (!this.stopMountAndClearEffect()) return false;
+    } catch (e) {
+      this.entryManager.DOMApis.removeElement(this.appContainer);
+      this.hooks.lifecycle.errorMountApp.emit(e, this.appInfo);
+      return false;
+    } finally {
+      this.mounting = false;
+    }
+    return true;
+  }
+
+  // Performs js resources provided by the module, finally get the content of the export
+  async compileAndRenderContainer() {
+    // Render the application node
+    // If you don't want to use the CJS export, at the entrance is not can not pass the module, the require
+    await this.renderTemplate();
+
+    // Execute asynchronous script
+    return {
+      asyncScripts: new Promise<void>((resolve) => {
+        // Asynchronous script does not block the rendering process
+        setTimeout(() => {
+          if (this.stopMountAndClearEffect()) {
+            for (const jsManager of this.resources.js) {
+              if (jsManager.async) {
+                try {
+                  this.execScript(
+                    jsManager.scriptCode,
+                    {},
+                    jsManager.url || this.appInfo.entry,
+                    {
+                      async: false,
+                      noEntry: true,
+                    },
+                  );
+                } catch (e) {
+                  this.hooks.lifecycle.errorMountApp.emit(e, this.appInfo);
+                }
+              }
+            }
+          }
+          resolve();
+        });
+      }),
+    };
+  }
+}
+```
+
+`mount`主要实现以下操作:
+- 生命周期的分发: `beforeMount`, `afterMount`
+- 状态变更: `this.active`, `this.mounting`, `this.display`
+- 调用 `this.compileAndRenderContainer` 执行编译
+  - 调用`this.renderTemplate`渲染同步代码片段
+  - 返回 `asyncScripts` 函数用于在下一个宏任务(task) 执行异步js代码片段
+- 在每一个异步片段过程中都尝试执行 `stopMountAndClearEffect` 来判断当前状态，以确保状态的准确性(用于处理在异步代码执行过程中被取消的问题)
+
+我们看一下`renderTemplate`的逻辑:
+
+```ts
+export class App {
+  private async renderTemplate() {
+    const { appInfo, entryManager, resources } = this;
+    const { url: baseUrl, DOMApis } = entryManager;
+    const { htmlNode, appContainer } = createAppContainer(appInfo);
+
+    // Transformation relative path
+    this.htmlNode = htmlNode;
+    this.appContainer = appContainer;
+
+    // To append to the document flow, recursive again create the contents of the HTML or execute the script
+    await this.addContainer();
+
+    const customRenderer: Parameters<typeof entryManager.createElements>[0] = {
+      // ...
+
+      script: (node) => {
+        const mimeType = entryManager.findAttributeValue(node, 'type');
+        const isModule = mimeType === 'module';
+
+        if (mimeType) {
+          // Other script template
+          if (!isModule && !isJsType({ type: mimeType })) {
+            return DOMApis.createElement(node);
+          }
+        }
+        const jsManager = resources.js.find((manager) => {
+          return !manager.async ? manager.isSameOrigin(node) : false;
+        });
+
+        if (jsManager) {
+          const { url, scriptCode } = jsManager;
+          this.execScript(scriptCode, {}, url || this.appInfo.entry, {
+            isModule,
+            async: false,
+            isInline: jsManager.isInlineScript(),
+            noEntry: toBoolean(
+              entryManager.findAttributeValue(node, 'no-entry'),
+            ),
+          });
+        } else if (__DEV__) {
+          const async = entryManager.findAttributeValue(node, 'async');
+          if (typeof async === 'undefined' || async === 'false') {
+            const tipInfo = JSON.stringify(node, null, 2);
+            warn(
+              `Current js node cannot be found, the resource may not exist.\n\n ${tipInfo}`,
+            );
+          }
+        }
+        return DOMApis.createScriptCommentNode(node);
+      },
+
+      // ...
+    };
+
+    // Render dom tree and append to document.
+    entryManager.createElements(customRenderer, htmlNode);
+  }
+}
+```
+
+- 调用 `createAppContainer` 函数创建一些空白的容器dom, 注意此时还没有挂载到界面上:
+  ```ts
+  export function createAppContainer(appInfo: interfaces.AppInfo) {
+    const name = appInfo.name;
+    // Create a temporary node, which is destroyed by the module itself
+    let htmlNode: HTMLDivElement | HTMLHtmlElement =
+      document.createElement('div');
+    const appContainer = document.createElement('div');
+
+    if (appInfo.sandbox && appInfo.sandbox.strictIsolation) {
+      htmlNode = document.createElement('html');
+      const root = appContainer.attachShadow({ mode: 'open' });
+      root.appendChild(htmlNode);
+      // asyncNodeAttribute(htmlNode, document.body);
+      dispatchEvents(root);
+    } else {
+      htmlNode.setAttribute(__MockHtml__, '');
+      appContainer.appendChild(htmlNode);
+    }
+    appContainer.id = `${appContainerId}_${name}_${createKey()}`;
+
+    return {
+      htmlNode,
+      appContainer,
+    };
+  }
+  ```
+  - 如果开启了 `sandbox` 和 `strictIsolation` 配置则进行严格的隔离(使用`appContainer.attachShadow`)来创建`ShadowDOM`
+- 调用`addContainer`来将代码挂载容器组件到文档中, 通过执行`domGetter`来获取父容器节点
+  ```ts
+  private async addContainer() {
+    // Initialize the mount point, support domGetter as promise, is advantageous for the compatibility
+    const wrapperNode = await getRenderNode(this.appInfo.domGetter);
+    if (typeof wrapperNode.appendChild === 'function') {
+      wrapperNode.appendChild(this.appContainer);
+    }
+  }
+  ```
