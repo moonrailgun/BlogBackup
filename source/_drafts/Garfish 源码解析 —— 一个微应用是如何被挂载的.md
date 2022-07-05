@@ -15,7 +15,7 @@ date: 2022-06-29 11:50:27
 
 ![微前端基本架构](/images/garfish/1.excalidraw.svg)
 
-因为当前对 `Garfish` 的解读极少，而微前端又是前端领域相当重要的一环，因此写下本文，同时也是对学习源码的一个总结
+因为当前对 `Garfish` 的解读极少，而微前端又是现代前端领域相当重要的一环，因此写下本文，同时也是对学习源码的一个总结
 
 *本文基于 garfish#0d4cc0c82269bce8422b0e9105b7fe88c2efe42a 进行解读*
 
@@ -1149,7 +1149,17 @@ export class App {
 
     const customRenderer: Parameters<typeof entryManager.createElements>[0] = {
       // ...
-
+      body: (node) => {
+        if (!this.strictIsolation) {
+          node = entryManager.cloneNode(node);
+          node.tagName = 'div';
+          node.attributes.push({
+            key: __MockBody__,
+            value: null,
+          });
+        }
+        return DOMApis.createElement(node);
+      },
       script: (node) => {
         const mimeType = entryManager.findAttributeValue(node, 'type');
         const isModule = mimeType === 'module';
@@ -1233,3 +1243,54 @@ export class App {
     }
   }
   ```
+- 调用`entryManager.createElements(customRenderer, htmlNode);` 来实际创建节点。
+  ```ts
+  // Render dom tree
+  createElements(renderer: Renderer, parent: Element) {
+    const elements: Array<Element> = [];
+    const traverse = (node: Node | Text, parentEl?: Element) => {
+      let el: any;
+      if (this.DOMApis.isCommentNode(node)) {
+        // Filter comment node
+      } else if (this.DOMApis.isText(node)) {
+        el = this.DOMApis.createTextNode(node);
+        parentEl && parentEl.appendChild(el);
+      } else if (this.DOMApis.isNode(node)) {
+        const { tagName, children } = node as Node;
+        if (renderer[tagName]) {
+          el = renderer[tagName](node as Node);
+        } else {
+          el = this.DOMApis.createElement(node as Node);
+        }
+        if (parentEl && el) parentEl.appendChild(el);
+
+        if (el) {
+          const { nodeType, _ignoreChildNodes } = el;
+          // Filter "comment" and "document" node
+          if (!_ignoreChildNodes && nodeType !== 8 && nodeType !== 10) {
+            for (const child of children) {
+              traverse(child, el);
+            }
+          }
+        }
+      }
+      return el;
+    };
+
+    for (const node of this.astTree) {
+      if (this.DOMApis.isNode(node) && node.tagName !== '!doctype') {
+        const el = traverse(node, parent);
+        el && elements.push(el);
+      }
+    }
+    return elements;
+  }
+  ```
+  使用`traverse`函数对自身进行树节点遍历，将ast树转换为dom树并挂载到`parent`上
+  - 注意有意思的一点是他是在遍历`ast`过程中的同时执行`appendChild`方法加载到dom树上而不是将节点生成完毕后一次性加载(也许是因为操作都是在一个task中所以浏览器会一次性执行？)
+
+## 总结
+
+综上，`garfish`完成了一次远程获取目标代码 => 解析成ast => 然后再从ast转换成dom树的过程。
+
+将一段远程的页面/js加载到当前页面的固定位置
