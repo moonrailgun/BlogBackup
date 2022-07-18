@@ -1,5 +1,5 @@
 ---
-title: 源码定位工具source-ref的使用
+title: 源码快速定位工具 source-ref
 tags:
   - 源码定位
   - 产研效能
@@ -9,13 +9,14 @@ date: 2022-07-06 11:23:29
 
 ## 背景
 
-`source-ref` 是一款通过网页点击快速定位到源码的工具，用于解决从视觉上快速定位到所在源码具体位置。与现有的`devtools`的源码定位互补
+`source-ref` 是一款通过网页点击快速定位到源码的工具，用于解决从视觉上快速定位到所在源码具体位置。与现有的`devtools`(vue-devtools/react-developer-tools)的源码定位互补
 
 - UI框架支持 `React`, `Vue`框架
-- 打包工具支持 `webpack` `rollup` `vite`
-- 跳转方式支持 `vscode 打开` `Github 打开`
+- 打包工具支持 `webpack`,`rollup`, `vite`
+- 跳转方式支持 `vscode 打开`, `Github 打开`
 
 官方网站: [https://sourceref.moonrailgun.com/](https://sourceref.moonrailgun.com/)
+开源地址: [https://github.com/moonrailgun/source-ref](https://github.com/moonrailgun/source-ref)
 
 ## 演示
 
