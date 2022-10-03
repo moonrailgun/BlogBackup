@@ -4,6 +4,7 @@ tags:
   - k3s
   - 学习笔记
   - devops
+abbrlink: 32dfd7d0
 date: 2022-08-31 10:52:43
 ---
 
