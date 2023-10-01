@@ -13,4 +13,5 @@ title: 关于我
 - 2018.09.03 - 2021.07.23 上海谷露软件有限公司 HCM团队 前端工程师 [gllue](https://gllue.com)
 <!-- 自然灾害导致差了两天没有接上 -->
 - 2021.07.28 - 2023.05.31 北京字节跳动科技有限公司 飞书团队 前端工程师 [Lark](https://www.feishu.cn/)
-- 2023.06.01 - 至今 全职开发开源项目 [Tailchat](https://tailchat.msgbyte.com/)
+- 2023.06.01 - 2023.09.20 全职开发开源项目 [Tailchat](https://tailchat.msgbyte.com/)
+- 2023.09.21 - 至今 FlowGPT 软件工程师 [FlowGPT](https://flowgpt.com/)
