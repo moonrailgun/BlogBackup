@@ -2,7 +2,8 @@
 title: 记录一次docker占用过大导致磁盘爆炸的问题
 tags:
   - Linux
-date: 2024-7-15 22:49:01
+abbrlink: cee56102
+date: 2024-07-15 22:49:01
 ---
 
 ## 背景
